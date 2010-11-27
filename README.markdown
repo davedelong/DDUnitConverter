@@ -4,6 +4,10 @@ A simple library for converting a value from one unit to another.
 
 ## Usage
 
+Simply copy the "DDUnitConverter" subfolder into your project, and `#import "DDUnitConversion.h"`.
+
+You can do the actual conversions like so:
+
 	NSNumber * value = [[DDUnitConverter lengthUnitConverter] convert:[NSNumber numberWithInt:100]
 															 fromUnit:DDLengthUnitLightyears
 															   toUnit:DDLengthUnitAngstroms];
