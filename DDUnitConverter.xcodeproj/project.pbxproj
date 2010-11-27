@@ -1,0 +1,384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55B5ABC7129F11F400FBF75C /* DDUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5ABC6129F11F400FBF75C /* DDUnitConverter.m */; };
+		55B5ABCA129F162500FBF75C /* DDLengthUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5ABC9129F162500FBF75C /* DDLengthUnitConverter.m */; };
+		55B5ABDB129F1C2400FBF75C /* DDAccelerationUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5ABDA129F1C2400FBF75C /* DDAccelerationUnitConverter.m */; };
+		55B5ABF2129F6F7B00FBF75C /* DDAngleUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5ABF1129F6F7B00FBF75C /* DDAngleUnitConverter.m */; };
+		55B5ABF5129F780E00FBF75C /* NSDecimalNumber+DDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5ABF4129F780E00FBF75C /* NSDecimalNumber+DDConstants.m */; };
+		55B5ABF8129F875800FBF75C /* DDAreaUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B5ABF7129F875800FBF75C /* DDAreaUnitConverter.m */; };
+		55BBF06612A03828004DDAB0 /* DDCurrentUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF06512A03827004DDAB0 /* DDCurrentUnitConverter.m */; };
+		55BBF06912A03955004DDAB0 /* DDByteUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF06812A03955004DDAB0 /* DDByteUnitConverter.m */; };
+		55BBF07A12A04925004DDAB0 /* DDEnergyUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF07912A04925004DDAB0 /* DDEnergyUnitConverter.m */; };
+		55BBF09612A04B4B004DDAB0 /* DDForceUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF09512A04B4B004DDAB0 /* DDForceUnitConverter.m */; };
+		55BBF0A312A04C9E004DDAB0 /* DDIlluminationUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0A212A04C9E004DDAB0 /* DDIlluminationUnitConverter.m */; };
+		55BBF0A612A04F6B004DDAB0 /* DDInductanceUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0A512A04F6B004DDAB0 /* DDInductanceUnitConverter.m */; };
+		55BBF0A912A051F0004DDAB0 /* DDMagnitudeUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0A812A051F0004DDAB0 /* DDMagnitudeUnitConverter.m */; };
+		55BBF0AE12A054B1004DDAB0 /* DDMassUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0AD12A054B1004DDAB0 /* DDMassUnitConverter.m */; };
+		55BBF0B312A05CFE004DDAB0 /* DDPowerUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0B212A05CFE004DDAB0 /* DDPowerUnitConverter.m */; };
+		55BBF0B812A05EAA004DDAB0 /* DDPressureUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0B712A05EAA004DDAB0 /* DDPressureUnitConverter.m */; };
+		55BBF0CD12A06048004DDAB0 /* DDRadiationUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0CC12A06048004DDAB0 /* DDRadiationUnitConverter.m */; };
+		55BBF0D212A060E9004DDAB0 /* DDTemperatureUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0D112A060E9004DDAB0 /* DDTemperatureUnitConverter.m */; };
+		55BBF0D712A063A6004DDAB0 /* DDTimeUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0D612A063A6004DDAB0 /* DDTimeUnitConverter.m */; };
+		55BBF0DA12A07699004DDAB0 /* DDTorqueUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0D912A07699004DDAB0 /* DDTorqueUnitConverter.m */; };
+		55BBF0E112A08079004DDAB0 /* DDVelocityUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0E012A08079004DDAB0 /* DDVelocityUnitConverter.m */; };
+		55BBF0E612A08422004DDAB0 /* DDVolumeUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0E512A08422004DDAB0 /* DDVolumeUnitConverter.m */; };
+		55BBF0FC12A0C347004DDAB0 /* DDCurrencyUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBF0FB12A0C347004DDAB0 /* DDCurrencyUnitConverter.m */; };
+		8DD76F9A0486AA7600D96B5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+		8DD76F9F0486AA7600D96B5E /* DDUnitConverter.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* DDUnitConverter.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F9E0486AA7600D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F9F0486AA7600D96B5E /* DDUnitConverter.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		08FB7796FE84155DC02AAC07 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32A70AAB03705E1F00C91783 /* DDUnitConverter_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUnitConverter_Prefix.pch; sourceTree = "<group>"; };
+		55B5ABC5129F11F400FBF75C /* DDUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUnitConverter.h; sourceTree = "<group>"; };
+		55B5ABC6129F11F400FBF75C /* DDUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUnitConverter.m; sourceTree = "<group>"; };
+		55B5ABC8129F162500FBF75C /* DDLengthUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLengthUnitConverter.h; sourceTree = "<group>"; };
+		55B5ABC9129F162500FBF75C /* DDLengthUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLengthUnitConverter.m; sourceTree = "<group>"; };
+		55B5ABD9129F1C2400FBF75C /* DDAccelerationUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAccelerationUnitConverter.h; sourceTree = "<group>"; };
+		55B5ABDA129F1C2400FBF75C /* DDAccelerationUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAccelerationUnitConverter.m; sourceTree = "<group>"; };
+		55B5ABF0129F6F7B00FBF75C /* DDAngleUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAngleUnitConverter.h; sourceTree = "<group>"; };
+		55B5ABF1129F6F7B00FBF75C /* DDAngleUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAngleUnitConverter.m; sourceTree = "<group>"; };
+		55B5ABF3129F780E00FBF75C /* NSDecimalNumber+DDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+DDConstants.h"; sourceTree = "<group>"; };
+		55B5ABF4129F780E00FBF75C /* NSDecimalNumber+DDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+DDConstants.m"; sourceTree = "<group>"; };
+		55B5ABF6129F875800FBF75C /* DDAreaUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAreaUnitConverter.h; sourceTree = "<group>"; };
+		55B5ABF7129F875800FBF75C /* DDAreaUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAreaUnitConverter.m; sourceTree = "<group>"; };
+		55BBF06412A03827004DDAB0 /* DDCurrentUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCurrentUnitConverter.h; sourceTree = "<group>"; };
+		55BBF06512A03827004DDAB0 /* DDCurrentUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCurrentUnitConverter.m; sourceTree = "<group>"; };
+		55BBF06712A03955004DDAB0 /* DDByteUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDByteUnitConverter.h; sourceTree = "<group>"; };
+		55BBF06812A03955004DDAB0 /* DDByteUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDByteUnitConverter.m; sourceTree = "<group>"; };
+		55BBF07812A04925004DDAB0 /* DDEnergyUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDEnergyUnitConverter.h; sourceTree = "<group>"; };
+		55BBF07912A04925004DDAB0 /* DDEnergyUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDEnergyUnitConverter.m; sourceTree = "<group>"; };
+		55BBF09412A04B4B004DDAB0 /* DDForceUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDForceUnitConverter.h; sourceTree = "<group>"; };
+		55BBF09512A04B4B004DDAB0 /* DDForceUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDForceUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0A112A04C9E004DDAB0 /* DDIlluminationUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDIlluminationUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0A212A04C9E004DDAB0 /* DDIlluminationUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDIlluminationUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0A412A04F6B004DDAB0 /* DDInductanceUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInductanceUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0A512A04F6B004DDAB0 /* DDInductanceUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInductanceUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0A712A051F0004DDAB0 /* DDMagnitudeUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMagnitudeUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0A812A051F0004DDAB0 /* DDMagnitudeUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMagnitudeUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0AC12A054B1004DDAB0 /* DDMassUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMassUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0AD12A054B1004DDAB0 /* DDMassUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMassUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0B112A05CFE004DDAB0 /* DDPowerUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPowerUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0B212A05CFE004DDAB0 /* DDPowerUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPowerUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0B612A05EAA004DDAB0 /* DDPressureUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPressureUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0B712A05EAA004DDAB0 /* DDPressureUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPressureUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0CB12A06048004DDAB0 /* DDRadiationUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRadiationUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0CC12A06048004DDAB0 /* DDRadiationUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRadiationUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0D012A060E9004DDAB0 /* DDTemperatureUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTemperatureUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0D112A060E9004DDAB0 /* DDTemperatureUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTemperatureUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0D512A063A6004DDAB0 /* DDTimeUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTimeUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0D612A063A6004DDAB0 /* DDTimeUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTimeUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0D812A07699004DDAB0 /* DDTorqueUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTorqueUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0D912A07699004DDAB0 /* DDTorqueUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTorqueUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0DF12A08079004DDAB0 /* DDVelocityUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDVelocityUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0E012A08079004DDAB0 /* DDVelocityUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDVelocityUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0E412A08422004DDAB0 /* DDVolumeUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDVolumeUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0E512A08422004DDAB0 /* DDVolumeUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDVolumeUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0FA12A0C347004DDAB0 /* DDCurrencyUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCurrencyUnitConverter.h; sourceTree = "<group>"; };
+		55BBF0FB12A0C347004DDAB0 /* DDCurrencyUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCurrencyUnitConverter.m; sourceTree = "<group>"; };
+		55BBF0FD12A0CF28004DDAB0 /* DDUnitConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUnitConversion.h; sourceTree = "<group>"; };
+		8DD76FA10486AA7600D96B5E /* DDUnitConverter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DDUnitConverter; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859EA3029092ED04C91782 /* DDUnitConverter.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = DDUnitConverter.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F9B0486AA7600D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* DDUnitConverter */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859EA2029092E104C91782 /* Documentation */,
+				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = DDUnitConverter;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				32A70AAB03705E1F00C91783 /* DDUnitConverter_Prefix.pch */,
+				08FB7796FE84155DC02AAC07 /* main.m */,
+				55BBF16912A0D67A004DDAB0 /* DDUnitConverter */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76FA10486AA7600D96B5E /* DDUnitConverter */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55B5ABDE129F1E0900FBF75C /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				55B5ABD9129F1C2400FBF75C /* DDAccelerationUnitConverter.h */,
+				55B5ABDA129F1C2400FBF75C /* DDAccelerationUnitConverter.m */,
+				55B5ABF0129F6F7B00FBF75C /* DDAngleUnitConverter.h */,
+				55B5ABF1129F6F7B00FBF75C /* DDAngleUnitConverter.m */,
+				55B5ABF6129F875800FBF75C /* DDAreaUnitConverter.h */,
+				55B5ABF7129F875800FBF75C /* DDAreaUnitConverter.m */,
+				55BBF06712A03955004DDAB0 /* DDByteUnitConverter.h */,
+				55BBF06812A03955004DDAB0 /* DDByteUnitConverter.m */,
+				55BBF0FA12A0C347004DDAB0 /* DDCurrencyUnitConverter.h */,
+				55BBF0FB12A0C347004DDAB0 /* DDCurrencyUnitConverter.m */,
+				55BBF06412A03827004DDAB0 /* DDCurrentUnitConverter.h */,
+				55BBF06512A03827004DDAB0 /* DDCurrentUnitConverter.m */,
+				55BBF07812A04925004DDAB0 /* DDEnergyUnitConverter.h */,
+				55BBF07912A04925004DDAB0 /* DDEnergyUnitConverter.m */,
+				55BBF09412A04B4B004DDAB0 /* DDForceUnitConverter.h */,
+				55BBF09512A04B4B004DDAB0 /* DDForceUnitConverter.m */,
+				55BBF0A112A04C9E004DDAB0 /* DDIlluminationUnitConverter.h */,
+				55BBF0A212A04C9E004DDAB0 /* DDIlluminationUnitConverter.m */,
+				55BBF0A412A04F6B004DDAB0 /* DDInductanceUnitConverter.h */,
+				55BBF0A512A04F6B004DDAB0 /* DDInductanceUnitConverter.m */,
+				55B5ABC8129F162500FBF75C /* DDLengthUnitConverter.h */,
+				55B5ABC9129F162500FBF75C /* DDLengthUnitConverter.m */,
+				55BBF0A712A051F0004DDAB0 /* DDMagnitudeUnitConverter.h */,
+				55BBF0A812A051F0004DDAB0 /* DDMagnitudeUnitConverter.m */,
+				55BBF0AC12A054B1004DDAB0 /* DDMassUnitConverter.h */,
+				55BBF0AD12A054B1004DDAB0 /* DDMassUnitConverter.m */,
+				55BBF0B112A05CFE004DDAB0 /* DDPowerUnitConverter.h */,
+				55BBF0B212A05CFE004DDAB0 /* DDPowerUnitConverter.m */,
+				55BBF0B612A05EAA004DDAB0 /* DDPressureUnitConverter.h */,
+				55BBF0B712A05EAA004DDAB0 /* DDPressureUnitConverter.m */,
+				55BBF0CB12A06048004DDAB0 /* DDRadiationUnitConverter.h */,
+				55BBF0CC12A06048004DDAB0 /* DDRadiationUnitConverter.m */,
+				55BBF0D012A060E9004DDAB0 /* DDTemperatureUnitConverter.h */,
+				55BBF0D112A060E9004DDAB0 /* DDTemperatureUnitConverter.m */,
+				55BBF0D512A063A6004DDAB0 /* DDTimeUnitConverter.h */,
+				55BBF0D612A063A6004DDAB0 /* DDTimeUnitConverter.m */,
+				55BBF0D812A07699004DDAB0 /* DDTorqueUnitConverter.h */,
+				55BBF0D912A07699004DDAB0 /* DDTorqueUnitConverter.m */,
+				55BBF0DF12A08079004DDAB0 /* DDVelocityUnitConverter.h */,
+				55BBF0E012A08079004DDAB0 /* DDVelocityUnitConverter.m */,
+				55BBF0E412A08422004DDAB0 /* DDVolumeUnitConverter.h */,
+				55BBF0E512A08422004DDAB0 /* DDVolumeUnitConverter.m */,
+			);
+			name = Converters;
+			sourceTree = "<group>";
+		};
+		55BBF16912A0D67A004DDAB0 /* DDUnitConverter */ = {
+			isa = PBXGroup;
+			children = (
+				55BBF0FD12A0CF28004DDAB0 /* DDUnitConversion.h */,
+				55B5ABC5129F11F400FBF75C /* DDUnitConverter.h */,
+				55B5ABC6129F11F400FBF75C /* DDUnitConverter.m */,
+				55B5ABF3129F780E00FBF75C /* NSDecimalNumber+DDConstants.h */,
+				55B5ABF4129F780E00FBF75C /* NSDecimalNumber+DDConstants.m */,
+				55B5ABDE129F1E0900FBF75C /* Converters */,
+			);
+			path = DDUnitConverter;
+			sourceTree = "<group>";
+		};
+		C6859EA2029092E104C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859EA3029092ED04C91782 /* DDUnitConverter.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F960486AA7600D96B5E /* DDUnitConverter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "DDUnitConverter" */;
+			buildPhases = (
+				8DD76F990486AA7600D96B5E /* Sources */,
+				8DD76F9B0486AA7600D96B5E /* Frameworks */,
+				8DD76F9E0486AA7600D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DDUnitConverter;
+			productInstallPath = "$(HOME)/bin";
+			productName = DDUnitConverter;
+			productReference = 8DD76FA10486AA7600D96B5E /* DDUnitConverter */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "DDUnitConverter" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* DDUnitConverter */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F960486AA7600D96B5E /* DDUnitConverter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F990486AA7600D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F9A0486AA7600D96B5E /* main.m in Sources */,
+				55B5ABC7129F11F400FBF75C /* DDUnitConverter.m in Sources */,
+				55B5ABCA129F162500FBF75C /* DDLengthUnitConverter.m in Sources */,
+				55B5ABDB129F1C2400FBF75C /* DDAccelerationUnitConverter.m in Sources */,
+				55B5ABF2129F6F7B00FBF75C /* DDAngleUnitConverter.m in Sources */,
+				55B5ABF5129F780E00FBF75C /* NSDecimalNumber+DDConstants.m in Sources */,
+				55B5ABF8129F875800FBF75C /* DDAreaUnitConverter.m in Sources */,
+				55BBF06612A03828004DDAB0 /* DDCurrentUnitConverter.m in Sources */,
+				55BBF06912A03955004DDAB0 /* DDByteUnitConverter.m in Sources */,
+				55BBF07A12A04925004DDAB0 /* DDEnergyUnitConverter.m in Sources */,
+				55BBF09612A04B4B004DDAB0 /* DDForceUnitConverter.m in Sources */,
+				55BBF0A312A04C9E004DDAB0 /* DDIlluminationUnitConverter.m in Sources */,
+				55BBF0A612A04F6B004DDAB0 /* DDInductanceUnitConverter.m in Sources */,
+				55BBF0A912A051F0004DDAB0 /* DDMagnitudeUnitConverter.m in Sources */,
+				55BBF0AE12A054B1004DDAB0 /* DDMassUnitConverter.m in Sources */,
+				55BBF0B312A05CFE004DDAB0 /* DDPowerUnitConverter.m in Sources */,
+				55BBF0B812A05EAA004DDAB0 /* DDPressureUnitConverter.m in Sources */,
+				55BBF0CD12A06048004DDAB0 /* DDRadiationUnitConverter.m in Sources */,
+				55BBF0D212A060E9004DDAB0 /* DDTemperatureUnitConverter.m in Sources */,
+				55BBF0D712A063A6004DDAB0 /* DDTimeUnitConverter.m in Sources */,
+				55BBF0DA12A07699004DDAB0 /* DDTorqueUnitConverter.m in Sources */,
+				55BBF0E112A08079004DDAB0 /* DDVelocityUnitConverter.m in Sources */,
+				55BBF0E612A08422004DDAB0 /* DDVolumeUnitConverter.m in Sources */,
+				55BBF0FC12A0C347004DDAB0 /* DDCurrencyUnitConverter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB927508733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DDUnitConverter_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = DDUnitConverter;
+			};
+			name = Debug;
+		};
+		1DEB927608733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DDUnitConverter_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = DDUnitConverter;
+			};
+			name = Release;
+		};
+		1DEB927908733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB927A08733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "DDUnitConverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927508733DD40010E9CD /* Debug */,
+				1DEB927608733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "DDUnitConverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927908733DD40010E9CD /* Debug */,
+				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
