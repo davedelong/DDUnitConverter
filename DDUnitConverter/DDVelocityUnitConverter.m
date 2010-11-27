@@ -65,6 +65,8 @@
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:268224 exponent:-4 isNegative:NO]; break;
 		case DDVelocityUnitMilesPerSecond:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1609344 exponent:-3 isNegative:NO]; break;
+		case DDVelocityUnitFurlongsPerMicrofortnight:
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1663 exponent:-7 isNegative:NO]; break;
 		default:
 			break;
 	}

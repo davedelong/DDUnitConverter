@@ -64,6 +64,8 @@
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1016047 exponent:-3 isNegative:NO]; break;
 		case DDMassUnitTonnes:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:3 isNegative:NO]; break;
+		case DDMassUnitFirkins:
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:408233133 exponent:-7 isNegative:NO]; break;
 		default:
 			break;
 	}

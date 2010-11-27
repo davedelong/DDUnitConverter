@@ -70,6 +70,8 @@
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:603148579190177328 exponent:-12 isNegative:NO]; break;
 		case DDTimeUnitSiderealYears:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:3147075857303 exponent:-5 isNegative:NO]; break;
+		case DDTimeUnitMicrofortnights:
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:12096 exponent:-4 isNegative:NO]; break;
 		default:
 			break;
 	}

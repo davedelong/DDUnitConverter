@@ -36,7 +36,8 @@ enum {
 	DDVelocityUnitMetersPerSecond,
 	DDVelocityUnitMilesPerHour,
 	DDVelocityUnitMilesPerMinute,
-	DDVelocityUnitMilesPerSecond
+	DDVelocityUnitMilesPerSecond,
+	DDVelocityUnitFurlongsPerMicrofortnight
 };
 typedef NSUInteger DDVelocityUnit;
 

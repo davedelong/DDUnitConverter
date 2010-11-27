@@ -36,7 +36,8 @@ enum {
 	DDMassUnitSlugs,
 	DDMassUnitStones,
 	DDMassUnitUKTons,
-	DDMassUnitTonnes
+	DDMassUnitTonnes,
+	DDMassUnitFirkins
 };
 typedef NSUInteger DDMassUnit;
 

@@ -40,7 +40,9 @@ enum {
 	DDTimeUnitSiderealHours,
 	DDTimeUnitSiderealDays,
 	DDTimeUnitSiderealWeeks,
-	DDTimeUnitSiderealYears
+	DDTimeUnitSiderealYears,
+	
+	DDTimeUnitMicrofortnights
 };
 typedef NSUInteger DDTimeUnit;
 
