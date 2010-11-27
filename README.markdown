@@ -42,7 +42,7 @@ You can do the actual conversions like so:
 - Velocity
 - Volume
 
-If you want more categories, more units, or have found a bug with the convserions, please file an issue.
+If you want more categories, more units, or have found a bug with the conversions, please file an issue.
 
 ## Compatibility
 
