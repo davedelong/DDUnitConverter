@@ -76,8 +76,14 @@ typedef NSUInteger DDCurrencyUnit;
 
 }
 
+//retrieve a displayable (english) name of the currency unit
 + (NSString *)nameOfCurrencyUnit:(DDCurrencyUnit)unit;
+
+//refresh the exchange rates
 - (void) refreshExchangeRates;
-- (void) refreshExchangeRatesWithCompletion:(void(^)(void))completionHandler;
+
+//refresh the exchange rates and invoke the completion handler upon completion.
+//the completion handler is guaranteed to be executed on the calling queue
+- (void) refreshExchangeRatesWithCompletion:(void(^)(NSError *))completionHandler;
 
 @end

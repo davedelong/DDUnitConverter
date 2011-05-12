@@ -9,6 +9,63 @@
 #import "DDCurrencyUnitConverter.h"
 #import <dispatch/dispatch.h>
 
+@interface DDCurrencyUnitConverterConnectionDelegate : NSObject {
+@private
+    NSError *error;
+    NSMutableData *data;
+    NSStringEncoding encoding;
+    BOOL finished;
+}
+@property (nonatomic, getter=isFinished) BOOL finished;
+@property (nonatomic, retain) NSError *error;
+@property (nonatomic, readonly) NSString *string;
+@end
+
+@implementation DDCurrencyUnitConverterConnectionDelegate
+@synthesize finished;
+@synthesize error;
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        encoding = NSMacOSRomanStringEncoding;
+        [self setFinished:NO];
+    }
+    return self;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
+    NSString *contentLength = [[response allHeaderFields] objectForKey:@"Content-Length"];
+    NSUInteger length = [contentLength intValue];
+    data = [[NSMutableData alloc] initWithLength:length];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)chunk {
+    [data appendData:chunk];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [self setError:nil];
+    [self setFinished:YES];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)anError {
+    [self setError:anError];
+    [self setFinished:YES];
+}
+
+- (NSString *)string {
+    return [[[NSString alloc] initWithData:data encoding:encoding] autorelease];
+}
+
+- (void)dealloc {
+    [error release];
+    [data release];
+    [super dealloc];
+}
+
+@end
+
 static NSString *_DDCurrencyNames[] = {
     @"Euro",
     @"Japanese Yen",
@@ -83,14 +140,23 @@ static dispatch_queue_t updateQueue = nil;
     return _DDCurrencyNames[unit];
 }
 
-+ (void) refreshExchangeRatesInBackground {
-	if ([NSThread currentThread] == [NSThread mainThread]) { return; }
-    NSLog(@"locking for refresh");
++ (NSError *) refreshExchangeRatesInBackground {
+	if ([NSThread currentThread] == [NSThread mainThread]) { return nil; }
+    
 	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
 	NSURL * imfURL = [NSURL URLWithString:@"http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"];
-	NSError * error = nil;
-	NSString * raw = [NSString stringWithContentsOfURL:imfURL encoding:NSUTF8StringEncoding error:&error];
+    NSURLRequest *imfRequest = [NSURLRequest requestWithURL:imfURL];
+    DDCurrencyUnitConverterConnectionDelegate *tmpDelegate = [[DDCurrencyUnitConverterConnectionDelegate alloc] init];
+    
+    NSURLConnection *imfConnection = [[NSURLConnection alloc] initWithRequest:imfRequest delegate:tmpDelegate];
+    while ([tmpDelegate isFinished] == NO) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
+    }
+    [imfConnection release];
+    
+    NSString *raw = [tmpDelegate string];
+    NSError *error = [tmpDelegate error];
 	
 	if (error == nil) {
 		NSArray * rows = [raw componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
@@ -123,11 +189,13 @@ static dispatch_queue_t updateQueue = nil;
 			}
 		}
 	}
-    
-    NSLog(@"rates: %@", _DDCurrencyExchangeRates);
 	
+    [error retain];
+    [tmpDelegate release];
+    
 	[pool drain];
-    NSLog(@"unlocking from refresh");
+    
+    return [error autorelease];
 }
 
 + (void) initialize {
@@ -165,14 +233,18 @@ static dispatch_queue_t updateQueue = nil;
     [self refreshExchangeRatesWithCompletion:NULL];
 }
 
-- (void)refreshExchangeRatesWithCompletion:(void (^)(void))completionHandler {
+- (void)refreshExchangeRatesWithCompletion:(void (^)(NSError *))completionHandler {
     
     dispatch_queue_t currentQueue = dispatch_get_current_queue();
     completionHandler = [completionHandler copy];
     dispatch_async(updateQueue, ^{
-        [[self class] refreshExchangeRatesInBackground];
+        NSError *error = [[self class] refreshExchangeRatesInBackground];
         if (completionHandler != NULL) {
-            dispatch_async(currentQueue, completionHandler);
+            //wrap the completion handler in another block so we can capture the error
+            dispatch_block_t block = ^{
+                completionHandler(error);
+            };
+            dispatch_async(currentQueue, block);
         }
     });
     [completionHandler release];

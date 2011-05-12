@@ -8,9 +8,9 @@ Simply copy the "DDUnitConverter" subfolder into your project, and `#import "DDU
 
 You can do the actual conversions like so:
 
-	NSNumber * value = [[DDUnitConverter lengthUnitConverter] convert:[NSNumber numberWithInt:100]
-															 fromUnit:DDLengthUnitLightyears
-															   toUnit:DDLengthUnitAngstroms];
+	NSNumber * value = [[DDUnitConverter velocityUnitConverter] convertNumber:[NSNumber numberWithInt:100]
+															         fromUnit:DDVelocityUnitMilesPerHour
+															           toUnit:DDVelocityUnitFurlongsPerMicrofortnight];
 															   
 ## Precision
 
@@ -24,7 +24,7 @@ You can do the actual conversions like so:
 - Angle
 - Area
 - Bytes
-- Currency (pulls rates from the [IMF](http://imf.org))
+- Currency (pulls rates from the [International Monetary Fund](http://imf.org))
 - Current
 - Energy
 - Force
@@ -46,7 +46,8 @@ If you want more categories, more units, or have found a bug with the conversion
 
 ## Compatibility
 
-`DDUnitConverter` was tested on Mac OS X 10.6, but it should work just fine on Mac OS X 10.5 and iOS 3+.
+- Requires Mac OS X 10.6+
+- Requires iOS 3.0+
 
 ## License
 
