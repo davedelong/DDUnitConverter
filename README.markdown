@@ -47,7 +47,7 @@ If you want more categories, more units, or have found a bug with the conversion
 ## Compatibility
 
 - Requires Mac OS X 10.6+
-- Requires iOS 3.0+
+- Requires iOS 4.0+
 
 ## License
 
