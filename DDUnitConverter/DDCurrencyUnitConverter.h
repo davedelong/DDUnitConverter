@@ -76,6 +76,8 @@ typedef NSUInteger DDCurrencyUnit;
 
 }
 
++ (NSString *)nameOfCurrencyUnit:(DDCurrencyUnit)unit;
 - (void) refreshExchangeRates;
+- (void) refreshExchangeRatesWithCompletion:(void(^)(void))completionHandler;
 
 @end

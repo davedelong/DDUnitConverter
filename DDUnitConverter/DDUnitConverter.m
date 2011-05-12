@@ -19,15 +19,16 @@
 - (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
 	if (from == to) { return number; }
 	
+    //make sure it's an NSDecimalNumber
 	NSDecimalNumber * source = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
 	
-	NSDecimalNumber * convertToMeters = [[self class] multiplierForUnit:from];
-	NSDecimalNumber * valueInMeters = [source decimalNumberByMultiplyingBy:convertToMeters];
+	NSDecimalNumber * convertToBaseUnit = [[self class] multiplierForUnit:from];
+	NSDecimalNumber * valueInBaseUnit = [source decimalNumberByMultiplyingBy:convertToBaseUnit];
 	
-	NSDecimalNumber * convertFromMeters = [[self class] multiplierForUnit:to];
-	NSDecimalNumber * valueInTarget = [valueInMeters decimalNumberByDividingBy:convertFromMeters];
+	NSDecimalNumber * convertFromBaseUnit = [[self class] multiplierForUnit:to];
+	NSDecimalNumber * valueInTargetUnit = [valueInBaseUnit decimalNumberByDividingBy:convertFromBaseUnit];
 	
-	return valueInTarget;
+	return valueInTargetUnit;
 }
 
 @end

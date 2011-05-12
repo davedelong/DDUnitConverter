@@ -6,7 +6,7 @@ int main (int argc, const char * argv[]) {
 
 	DDCurrencyUnitConverter * c = [DDUnitConverter currencyUnitConverter];
 	
-	NSLog(@"%@", [c convertNumber:[NSNumber numberWithInt:100] fromUnit:DDCurrencyUnitUSDollar toUnit:DDCurrencyUnitEuro]);
+	NSLog(@"%@", [c convertNumber:[NSNumber numberWithInt:1] fromUnit:DDCurrencyUnitNorwegianKrone toUnit:DDCurrencyUnitUSDollar]);
 	
     // insert code here...
     NSLog(@"Hello, World!");
