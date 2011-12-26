@@ -223,9 +223,7 @@ static dispatch_queue_t updateQueue = nil;
 }
 
 - (NSNumber *) convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
-    dispatch_sync(updateQueue, ^{
-        YES; //this is so the method will wait while refreshing is going on 
-    });
+    dispatch_sync(updateQueue, ^{ });
     return [super convertNumber:number fromUnit:from toUnit:to];
 }
 
