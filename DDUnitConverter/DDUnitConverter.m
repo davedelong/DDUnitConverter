@@ -26,6 +26,9 @@
 	NSDecimalNumber * valueInBaseUnit = [source decimalNumberByMultiplyingBy:convertToBaseUnit];
 	
 	NSDecimalNumber * convertFromBaseUnit = [[self class] multiplierForUnit:to];
+    if ([convertFromBaseUnit isEqual:[NSDecimalNumber zero]]) {
+        convertFromBaseUnit = [NSDecimalNumber one];
+    }
 	NSDecimalNumber * valueInTargetUnit = [valueInBaseUnit decimalNumberByDividingBy:convertFromBaseUnit];
 	
 	return valueInTargetUnit;
