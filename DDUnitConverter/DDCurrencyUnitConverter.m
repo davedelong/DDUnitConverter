@@ -215,7 +215,7 @@ static dispatch_queue_t updateQueue = nil;
         NSString *name = _DDCurrencyNames[unit];
         multiplier = [_DDCurrencyExchangeRates objectForKey:name];
         if (multiplier == nil) {
-            NSLog(@"unknown currency: %@ (%lu)", name, unit);
+            NSLog(@"unknown currency: %@ (%lu)", name, (unsigned long)unit);
             multiplier = [NSDecimalNumber one];
         }
 	}
@@ -233,7 +233,7 @@ static dispatch_queue_t updateQueue = nil;
 
 - (void)refreshExchangeRatesWithCompletion:(void (^)(NSError *))completionHandler {
     
-    dispatch_queue_t currentQueue = dispatch_get_current_queue();
+    dispatch_queue_t currentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     completionHandler = [completionHandler copy];
     dispatch_async(updateQueue, ^{
         NSError *error = [[self class] refreshExchangeRatesInBackground];
