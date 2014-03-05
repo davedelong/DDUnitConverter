@@ -16,14 +16,11 @@
 	return nil;
 }
 
-- (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
+- (NSDecimalNumber *)convertNumber:(NSDecimalNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
 	if (from == to) { return number; }
 	
-    //make sure it's an NSDecimalNumber
-	NSDecimalNumber * source = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
-	
 	NSDecimalNumber * convertToBaseUnit = [[self class] multiplierForUnit:from];
-	NSDecimalNumber * valueInBaseUnit = [source decimalNumberByMultiplyingBy:convertToBaseUnit];
+	NSDecimalNumber * valueInBaseUnit = [number decimalNumberByMultiplyingBy:convertToBaseUnit];
 	
 	NSDecimalNumber * convertFromBaseUnit = [[self class] multiplierForUnit:to];
     if ([convertFromBaseUnit isEqual:[NSDecimalNumber zero]]) {

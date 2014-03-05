@@ -222,7 +222,7 @@ static dispatch_queue_t updateQueue = nil;
 	return multiplier;
 }
 
-- (NSNumber *) convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
+- (NSDecimalNumber *) convertNumber:(NSDecimalNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
     dispatch_sync(updateQueue, ^{ });
     return [super convertNumber:number fromUnit:from toUnit:to];
 }

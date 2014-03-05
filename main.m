@@ -6,16 +6,25 @@ int main (int argc, const char * argv[]) {
     
     DDUnitConverter *c = [DDUnitConverter velocityUnitConverter];
     
-    NSNumber * value = [c convertNumber:[NSNumber numberWithInt:100]
+    NSDecimalNumber * value = [c convertNumber:[NSDecimalNumber decimalNumberWithString:@"100"]
                                fromUnit:DDVelocityUnitMilesPerHour
                                  toUnit:DDVelocityUnitFurlongsPerMicrofortnight];
     NSLog(@"%@", value);
     
 	c = [DDUnitConverter currencyUnitConverter];
 	
-    value = [c convertNumber:[NSNumber numberWithInt:1] 
-                    fromUnit:DDCurrencyUnitNorwegianKrone 
+    value = [c convertNumber:[NSDecimalNumber decimalNumberWithString:@"1"]
+                    fromUnit:DDCurrencyUnitEuro
                       toUnit:DDCurrencyUnitUSDollar];
+	NSLog(@"%@", value);
+    
+    
+	c = [DDUnitConverter lengthUnitConverter];
+	
+    value = [c convertNumber:[NSDecimalNumber decimalNumberWithString:@"1"]
+                    fromUnit:DDLengthUnitKilometers
+                      toUnit:DDLengthUnitMeters];
+    
 	NSLog(@"%@", value);
 	
     [pool drain];

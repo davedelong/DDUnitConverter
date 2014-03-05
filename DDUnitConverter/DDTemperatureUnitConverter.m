@@ -19,11 +19,10 @@
 
 @implementation DDTemperatureUnitConverter
 
-- (NSNumber *) convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
+- (NSDecimalNumber *) convertNumber:(NSDecimalNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
 	if (from == to) { return number; }
 	
-	NSDecimalNumber * original = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
-	NSDecimalNumber * numberInCelcius = original;
+	NSDecimalNumber * numberInCelcius = number;
 	
 	NSDecimalNumber * fiveNinths = [NSDecimalNumber decimalNumberWithMantissa:555555555555 exponent:-12 isNegative:NO];
 	NSDecimalNumber * nineFifths = [NSDecimalNumber decimalNumberWithMantissa:18 exponent:-1 isNegative:NO];

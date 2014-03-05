@@ -14,6 +14,6 @@ typedef NSUInteger DDUnit;
 
 }
 
-- (NSNumber *) convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to;
+- (NSDecimalNumber *) convertNumber:(NSDecimalNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to;
 
 @end
