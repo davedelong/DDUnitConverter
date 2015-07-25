@@ -7,7 +7,7 @@ int main (int argc, const char *argv[]) {
         
         NSNumber *value = [c convertNumber:@100
                                    fromUnit:DDVelocityUnitMilesPerHour
-                                     toUnit:DDVelocityUnitFurlongsPerMicrofortnight];
+                                     toUnit:DDVelocityUnitFurlongsPerFortnight];
         NSLog(@"%@", value);
         
         c = [DDUnitConverter currencyUnitConverter];

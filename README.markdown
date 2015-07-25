@@ -10,7 +10,7 @@ You can do the actual conversions like so:
 
 	NSNumber *value = [[DDUnitConverter velocityUnitConverter] convertNumber:@100
                                                                     fromUnit:DDVelocityUnitMilesPerHour
-                                                                      toUnit:DDVelocityUnitFurlongsPerMicrofortnight];
+                                                                      toUnit:DDVelocityUnitFurlongsPerFortnight];
 															   
 ## Precision
 

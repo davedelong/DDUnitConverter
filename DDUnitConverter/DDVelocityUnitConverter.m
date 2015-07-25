@@ -24,7 +24,7 @@
 	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDVelocityUnitCentimetersPerHour:
-			multiplier = [NSDecimalNumber decimalNumberWithMantissa:2777777777777778 exponent:-15 isNegative:NO]; break;
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:2777777778 exponent:-15 isNegative:NO]; break;
 		case DDVelocityUnitCentimetersPerMinute:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:166666666667 exponent:-15 isNegative:NO]; break;
 		case DDVelocityUnitCentimetersPerSecond:
@@ -46,7 +46,7 @@
 		case DDVelocityUnitKilometersPerMinute:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:16666666666666667 exponent:-15 isNegative:NO]; break;
 		case DDVelocityUnitKilometersPerSecond:
-			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:-3 isNegative:NO]; break;
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:3 isNegative:NO]; break;
 		case DDVelocityUnitKnots:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:514444444444444 exponent:-15 isNegative:NO]; break;
 		case DDVelocityUnitLight:
@@ -65,7 +65,7 @@
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:268224 exponent:-4 isNegative:NO]; break;
 		case DDVelocityUnitMilesPerSecond:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1609344 exponent:-3 isNegative:NO]; break;
-		case DDVelocityUnitFurlongsPerMicrofortnight:
+		case DDVelocityUnitFurlongsPerFortnight:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1663 exponent:-7 isNegative:NO]; break;
 		default:
 			break;

@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, DDVelocityUnit) {
 	DDVelocityUnitMilesPerHour,
 	DDVelocityUnitMilesPerMinute,
 	DDVelocityUnitMilesPerSecond,
-	DDVelocityUnitFurlongsPerMicrofortnight
+	DDVelocityUnitFurlongsPerFortnight
 };
 
 @interface DDVelocityUnitConverter : DDUnitConverter
