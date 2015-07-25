@@ -107,7 +107,9 @@
 		case DDVolumeUnitNumber2Point5Cans:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:946072 exponent:-9 isNegative:NO]; break;
 		case DDVolumeUnitNumber10Cans:
-			multiplier = [NSDecimalNumber decimalNumberWithMantissa:37842966 exponent:-10 isNegative:NO]; break;
+            multiplier = [NSDecimalNumber decimalNumberWithMantissa:37842966 exponent:-10 isNegative:NO]; break;
+        case DDVolumeUnitUKGallons:
+            multiplier = [NSDecimalNumber decimalNumberWithMantissa:454609 exponent:-8 isNegative:NO]; break;
 		default:
 			break;
 	}

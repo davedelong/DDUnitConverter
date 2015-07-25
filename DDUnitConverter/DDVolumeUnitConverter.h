@@ -58,7 +58,8 @@ typedef NS_ENUM(NSInteger, DDVolumeUnit) {
 	DDVolumeUnitTablespoons,
 	DDVolumeUnitTeaspons,
 	DDVolumeUnitNumber2Point5Cans,
-	DDVolumeUnitNumber10Cans
+	DDVolumeUnitNumber10Cans,
+    DDVolumeUnitUKGallons
 };
 
 @interface DDVolumeUnitConverter : DDUnitConverter
