@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDVolumeUnitConverter)
 
 + (instancetype)volumeUnitConverter {
-	return [[[DDVolumeUnitConverter alloc] init] autorelease];
+	return [[DDVolumeUnitConverter alloc] init];
 }
 
 @end

@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDTemperatureUnitConverter)
 
 + (instancetype)temperatureUnitConverter {
-	return [[[DDTemperatureUnitConverter alloc] init] autorelease];
+	return [[DDTemperatureUnitConverter alloc] init];
 }
 
 @end

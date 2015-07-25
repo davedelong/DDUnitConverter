@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDPressureUnitConverter)
 
 + (instancetype)pressureUnitConverter {
-	return [[[DDPressureUnitConverter alloc] init] autorelease];
+	return [[DDPressureUnitConverter alloc] init];
 }
 
 @end

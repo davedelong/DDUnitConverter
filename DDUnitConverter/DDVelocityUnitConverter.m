@@ -12,7 +12,7 @@
 @implementation DDUnitConverter (DDVelocityUnitConverter)
 
 + (instancetype)velocityUnitConverter {
-	return [[[DDVelocityUnitConverter alloc] init] autorelease];
+	return [[DDVelocityUnitConverter alloc] init];
 }
 
 @end

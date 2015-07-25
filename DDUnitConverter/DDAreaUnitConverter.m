@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDAreaUnitConverter)
 
 + (instancetype)areaUnitConverter {
-	return [[[DDAreaUnitConverter alloc] init] autorelease];
+	return [[DDAreaUnitConverter alloc] init];
 }
 
 @end

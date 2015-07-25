@@ -12,7 +12,7 @@
 @implementation DDUnitConverter (DDForceUnitConverter)
 
 + (instancetype)forceUnitConverter {
-	return [[[DDForceUnitConverter alloc] init] autorelease];
+	return [[DDForceUnitConverter alloc] init];
 }
 
 @end

@@ -17,7 +17,7 @@
     BOOL finished;
 }
 @property (nonatomic, getter=isFinished) BOOL finished;
-@property (nonatomic, retain) NSError *error;
+@property (nonatomic, strong) NSError *error;
 @property (nonatomic, readonly) NSString *string;
 @end
 
@@ -55,14 +55,9 @@
 }
 
 - (NSString *)string {
-    return [[[NSString alloc] initWithData:data encoding:encoding] autorelease];
+    return [[NSString alloc] initWithData:data encoding:encoding];
 }
 
-- (void)dealloc {
-    [error release];
-    [data release];
-    [super dealloc];
-}
 
 @end
 
@@ -127,7 +122,7 @@ static dispatch_queue_t updateQueue = nil;
 @implementation DDUnitConverter (DDCurrencyUnitConverter)
 
 + (instancetype)currencyUnitConverter {
-	return [[[DDCurrencyUnitConverter alloc] init] autorelease];
+	return [[DDCurrencyUnitConverter alloc] init];
 }
 
 @end
@@ -153,7 +148,6 @@ static dispatch_queue_t updateQueue = nil;
         while ([tmpDelegate isFinished] == NO) {
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
         }
-        [imfConnection release];
         
         NSString *raw = [tmpDelegate string];
         error = [tmpDelegate error];
@@ -190,11 +184,9 @@ static dispatch_queue_t updateQueue = nil;
             }
         }
         
-        [error retain];
-        [tmpDelegate release];
     }
     
-    return [error autorelease];
+    return error;
 }
 
 + (void)initialize {
@@ -244,7 +236,6 @@ static dispatch_queue_t updateQueue = nil;
             dispatch_async(currentQueue, block);
         }
     });
-    [completionHandler release];
 }
 
 @end

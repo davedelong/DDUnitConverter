@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDMagnitudeUnitConverter)
 
 + (instancetype)magnitudeUnitConverter {
-	return [[[DDMagnitudeUnitConverter alloc] init] autorelease];
+	return [[DDMagnitudeUnitConverter alloc] init];
 }
 
 @end

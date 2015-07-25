@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDRadiationUnitConverter)
 
 + (instancetype)radiationUnitConverter {
-	return [[[DDRadiationUnitConverter alloc] init] autorelease];
+	return [[DDRadiationUnitConverter alloc] init];
 }
 
 @end

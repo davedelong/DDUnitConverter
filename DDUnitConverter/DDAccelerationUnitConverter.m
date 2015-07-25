@@ -12,7 +12,7 @@
 @implementation DDUnitConverter (DDAccelerationUnitConverter)
 
 + (instancetype)accelerationUnitConverter {
-	return [[[DDAccelerationUnitConverter alloc] init] autorelease];
+	return [[DDAccelerationUnitConverter alloc] init];
 }
 
 @end

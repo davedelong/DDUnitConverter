@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDMassUnitConverter)
 
 + (instancetype)massUnitConverter {
-	return [[[DDMassUnitConverter alloc] init] autorelease];
+	return [[DDMassUnitConverter alloc] init];
 }
 
 @end

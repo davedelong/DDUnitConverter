@@ -12,7 +12,7 @@
 @implementation DDUnitConverter (DDLengthUnitConverter)
 
 + (instancetype)lengthUnitConverter {
-	return [[[DDLengthUnitConverter alloc] init] autorelease];
+	return [[DDLengthUnitConverter alloc] init];
 }
 
 @end

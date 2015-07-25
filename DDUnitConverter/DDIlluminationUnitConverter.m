@@ -11,7 +11,7 @@
 @implementation DDUnitConverter (DDIlluminationUnitConverter)
 
 + (instancetype)illuminationUnitConverter {
-	return [[[DDIlluminationUnitConverter alloc] init] autorelease];
+	return [[DDIlluminationUnitConverter alloc] init];
 }
 
 @end
