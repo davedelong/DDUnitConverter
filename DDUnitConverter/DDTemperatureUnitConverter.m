@@ -37,7 +37,7 @@
 			numberInCelcius = [numberInCelcius decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithMantissa:27315 exponent:-2 isNegative:NO]];
 			break;
 		case DDTemperatureUnitReaumur:
-			numberInCelcius = [numberInCelcius decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:8 exponent:-1 isNegative:NO]];
+			numberInCelcius = [numberInCelcius decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:8 exponent:-1 isNegative:NO]];
 			break;
 		case DDTemperatureUnitRankine:
 			numberInCelcius = [numberInCelcius decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithMantissa:49167 exponent:-2 isNegative:NO]];
@@ -56,7 +56,7 @@
 			numberInTarget = [numberInTarget decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:27315 exponent:-2 isNegative:NO]];
 			break;
 		case DDTemperatureUnitReaumur:
-			numberInTarget = [numberInTarget decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:8 exponent:-1 isNegative:NO]];
+			numberInTarget = [numberInTarget decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:8 exponent:-1 isNegative:NO]];
 			break;
 		case DDTemperatureUnitRankine:
 			numberInTarget = [numberInTarget decimalNumberByMultiplyingBy:nineFifths];
