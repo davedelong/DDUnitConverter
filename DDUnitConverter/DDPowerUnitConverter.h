@@ -21,7 +21,8 @@ typedef NS_ENUM(NSInteger, DDPowerUnit) {
 	DDPowerUnitMetricHorsepower,
 	DDPowerUnitJoulesPerSecond,
 	DDPowerUnitKilogramForceMetersPerSecond,
-	DDPowerUnitWatts
+	DDPowerUnitWatts,
+    DDPowerUnitKilowatts
 };
 
 @interface DDPowerUnitConverter : DDUnitConverter
