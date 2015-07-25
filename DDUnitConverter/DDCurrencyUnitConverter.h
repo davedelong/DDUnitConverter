@@ -15,6 +15,15 @@
 
 @end
 
+/**
+    If fetching currencies results in an HTTP error, then the callback will provide
+    an error in the `DDHTTPErrorDomain`. The code will be the HTTP status code,
+    and the NSHTTPURLResponse will be in the `userInfo` dictionary under
+    the `DDHTTPResponseKey`.
+ */
+extern NSString * const DDHTTPErrorDomain;
+extern NSString * const DDHTTPResponseKey;
+
 typedef NS_ENUM(NSInteger, DDCurrencyUnit) {
 	DDCurrencyUnitEuro = 0,
 	DDCurrencyUnitJapaneseYen,

@@ -9,55 +9,144 @@
 #import "DDCurrencyUnitConverter.h"
 #import <dispatch/dispatch.h>
 
-@interface DDCurrencyUnitConverterConnectionDelegate : NSObject {
-@private
-    NSError *error;
-    NSMutableData *data;
-    NSStringEncoding encoding;
-    BOOL finished;
-}
-@property (nonatomic, getter=isFinished) BOOL finished;
-@property (nonatomic, strong) NSError *error;
-@property (nonatomic, readonly) NSString *string;
+NSString * const DDHTTPErrorDomain = @"DDHTTPErrorDomain";
+NSString * const DDHTTPResponseKey = @"DDHTTPResponseKey";
+static NSMutableDictionary *_DDCurrencyExchangeRates = nil;
+
+@interface DDCurrencyFetcher : NSObject
+
++ (instancetype)sharedCurrencyFetcher;
+
+- (void)fetchWithCompletionHandler:(void(^)(NSError *error))handler;
+- (void)fetchInitialRatesAndWaitIfNecessary;
+
 @end
 
-@implementation DDCurrencyUnitConverterConnectionDelegate
-@synthesize finished;
-@synthesize error;
+@implementation DDCurrencyFetcher {
+    BOOL _currentlyFetching;
+    dispatch_queue_t _fetchQueue;
+    NSMutableArray *_pendingHandlers;
+}
 
-- (id)init {
++ (instancetype)sharedCurrencyFetcher {
+    static DDCurrencyFetcher *shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared = [[DDCurrencyFetcher alloc] init];
+    });
+    return shared;
+}
+
+- (instancetype)init {
     self = [super init];
     if (self) {
-        encoding = NSMacOSRomanStringEncoding;
-        [self setFinished:NO];
+        _pendingHandlers = [NSMutableArray array];
+        _fetchQueue = dispatch_queue_create("com.davedelong.currencyFetcher", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
-    NSString *contentLength = [[response allHeaderFields] objectForKey:@"Content-Length"];
-    NSUInteger length = [contentLength intValue];
-    data = [[NSMutableData alloc] initWithLength:length];
+- (void)fetchWithCompletionHandler:(void (^)(NSError *))handler {
+    dispatch_async(_fetchQueue, ^{
+        if (handler != nil) {
+            [_pendingHandlers addObject:[handler copy]];
+        }
+        
+        if (_currentlyFetching == NO) {
+            [self _onqueue_fetchCurrencies];
+        }
+    });
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)chunk {
-    [data appendData:chunk];
+- (void)fetchInitialRatesAndWaitIfNecessary {
+    dispatch_semaphore_t signal = dispatch_semaphore_create(0);
+    
+    dispatch_sync(_fetchQueue, ^{
+        if (_currentlyFetching == YES || _DDCurrencyExchangeRates.count == 0) {
+            [self fetchWithCompletionHandler:^(NSError *error) {
+                dispatch_semaphore_signal(signal);
+            }];
+        } else {
+            dispatch_semaphore_signal(signal);
+        }
+    });
+    
+    dispatch_semaphore_wait(signal, DISPATCH_TIME_FOREVER);
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self setError:nil];
-    [self setFinished:YES];
+- (void)_onqueue_fetchCurrencies {
+    _currentlyFetching = YES;
+    NSURL *imfURL = [NSURL URLWithString:@"http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"];
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:imfURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        dispatch_async(_fetchQueue, ^{
+            NSError *callbackError = nil;
+            
+            if (error != nil) {
+                callbackError = error;
+            } else if (httpResponse.statusCode < 200 || httpResponse.statusCode >= 300) {
+                // turn the response into an error
+                NSDictionary *userInfo = @{DDHTTPResponseKey: httpResponse};
+                callbackError = [NSError errorWithDomain:DDHTTPErrorDomain code:httpResponse.statusCode userInfo:userInfo];
+            } else {
+                NSAssert(data.length > 0, @"Received empty data but did not receive an error?");
+                NSString *rawCurrencyTSV = [[NSString alloc] initWithData:data encoding:NSMacOSRomanStringEncoding];
+                [self _onqueue_handleString:rawCurrencyTSV];
+            }
+            [self _onqueue_performCallbacks:callbackError];
+            _currentlyFetching = NO;
+        });
+    }];
+    [task resume];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)anError {
-    [self setError:anError];
-    [self setFinished:YES];
+- (void)_onqueue_handleString:(NSString *)tsvString {
+    NSArray *lines = [tsvString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    BOOL parsingExchangeRateSection = NO;
+    
+    for (NSString *line in lines) {
+        if (line.length == 0) { continue; }
+        
+        if (parsingExchangeRateSection == NO && [line hasPrefix:@"Currency"]) {
+            // A row starting with "Currency" is how we find the start of the exchange rate section
+            parsingExchangeRateSection = YES;
+            continue;
+        }
+        
+        if (parsingExchangeRateSection == YES && [line hasPrefix:@"Currency"]) {
+            // we've reached the end of the exchange rate section, so we're done parsing
+            parsingExchangeRateSection = NO;
+            break;
+        }
+        
+        
+        NSArray *fields = [line componentsSeparatedByString:@"\t"];
+        NSString *currencyName = fields[0];
+        
+        double conversionValue = 0.0f;
+        for (NSInteger fieldIndex = 1; fieldIndex < fields.count; ++fieldIndex) {
+            NSString *field = fields[fieldIndex];
+            if (field.length > 0) {
+                conversionValue = field.doubleValue;
+                break;
+            }
+        }
+        _DDCurrencyExchangeRates[currencyName] = @(conversionValue);
+    }
+    
+    [self _onqueue_performCallbacks:nil];
 }
 
-- (NSString *)string {
-    return [[NSString alloc] initWithData:data encoding:encoding];
+- (void)_onqueue_performCallbacks:(NSError *)error {
+    NSArray *handlers = [_pendingHandlers copy];
+    [_pendingHandlers removeAllObjects];
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), ^{
+        for (void(^handler)(NSError *) in handlers) {
+            handler(error);
+        }
+    });
 }
-
 
 @end
 
@@ -116,8 +205,6 @@ static NSString *_DDCurrencyNames[] = {
     @"Bolivar Fuerte",
     @"SDR"
 };
-static NSMutableDictionary *_DDCurrencyExchangeRates = nil;
-static dispatch_queue_t updateQueue = nil;
 
 @implementation DDUnitConverter (DDCurrencyUnitConverter)
 
@@ -135,68 +222,10 @@ static dispatch_queue_t updateQueue = nil;
     return _DDCurrencyNames[unit];
 }
 
-+ (NSError *)refreshExchangeRatesInBackground {
-	if ([NSThread currentThread] == [NSThread mainThread]) { return nil; }
-    NSError *error = nil;
-    
-    @autoreleasepool {
-        NSURL *imfURL = [NSURL URLWithString:@"http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"];
-        NSURLRequest *imfRequest = [NSURLRequest requestWithURL:imfURL];
-        DDCurrencyUnitConverterConnectionDelegate *tmpDelegate = [[DDCurrencyUnitConverterConnectionDelegate alloc] init];
-        
-        NSURLConnection *imfConnection = [[NSURLConnection alloc] initWithRequest:imfRequest delegate:tmpDelegate];
-        while ([tmpDelegate isFinished] == NO) {
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
-        }
-        
-        NSString *raw = [tmpDelegate string];
-        error = [tmpDelegate error];
-        
-        if (error == nil) {
-            NSArray *rows = [raw componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-            BOOL hasStartedCulling = NO;
-            short rowIndex = 0;
-            for (NSString *row in rows) {
-                if ([row length] == 0) { continue; }
-                if (hasStartedCulling == NO) {
-                    if ([row hasPrefix:@"Currency"]) {
-                        hasStartedCulling = YES;
-                    }
-                } else {
-                    if ([row hasPrefix:@"Currency"]) {
-                        break;
-                    } else {
-                        NSArray *fields = [row componentsSeparatedByString:@"\t"];
-                        NSString *currencyName = [fields objectAtIndex:0];
-                        
-                        double conversionValue = 0.0f;
-                        for (int i = 1; i < [fields count]; ++i) {
-                            NSString *field = [fields objectAtIndex:i];
-                            if ([field length] > 0) {
-                                conversionValue = [field doubleValue];
-                                break;
-                            }
-                        }
-                        [_DDCurrencyExchangeRates setObject:@(conversionValue) forKey:currencyName];
-                        rowIndex++;
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    return error;
-}
-
 + (void)initialize {
 	if (self == [DDCurrencyUnitConverter class]) {
-        updateQueue = dispatch_queue_create("com.davedelong.ddunitconverter", 0);
         _DDCurrencyExchangeRates = [[NSMutableDictionary alloc] init];
-        
-        dispatch_async(updateQueue, ^{
-            [self refreshExchangeRatesInBackground];
-        });
+        [[DDCurrencyFetcher sharedCurrencyFetcher] fetchWithCompletionHandler:nil];
 	}
 }
 
@@ -214,28 +243,16 @@ static dispatch_queue_t updateQueue = nil;
 }
 
 - (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
-    dispatch_sync(updateQueue, ^{ });
+    [[DDCurrencyFetcher sharedCurrencyFetcher] fetchInitialRatesAndWaitIfNecessary];
     return [super convertNumber:number fromUnit:from toUnit:to];
 }
 
 - (void)refreshExchangeRates {
-    [self refreshExchangeRatesWithCompletion:NULL];
+    [[DDCurrencyFetcher sharedCurrencyFetcher] fetchWithCompletionHandler:nil];
 }
 
 - (void)refreshExchangeRatesWithCompletion:(void (^)(NSError *))completionHandler {
-    
-    dispatch_queue_t currentQueue = dispatch_get_current_queue();
-    completionHandler = [completionHandler copy];
-    dispatch_async(updateQueue, ^{
-        NSError *error = [[self class] refreshExchangeRatesInBackground];
-        if (completionHandler != NULL) {
-            //wrap the completion handler in another block so we can capture the error
-            dispatch_block_t block = ^{
-                completionHandler(error);
-            };
-            dispatch_async(currentQueue, block);
-        }
-    });
+    [[DDCurrencyFetcher sharedCurrencyFetcher] fetchWithCompletionHandler:completionHandler];
 }
 
 @end
