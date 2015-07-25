@@ -8,9 +8,9 @@ Simply copy the "DDUnitConverter" subfolder into your project, and `#import "DDU
 
 You can do the actual conversions like so:
 
-	NSNumber * value = [[DDUnitConverter velocityUnitConverter] convertNumber:[NSNumber numberWithInt:100]
-															         fromUnit:DDVelocityUnitMilesPerHour
-															           toUnit:DDVelocityUnitFurlongsPerMicrofortnight];
+	NSNumber *value = [[DDUnitConverter velocityUnitConverter] convertNumber:@100
+                                                                    fromUnit:DDVelocityUnitMilesPerHour
+                                                                      toUnit:DDVelocityUnitFurlongsPerMicrofortnight];
 															   
 ## Precision
 
@@ -46,12 +46,13 @@ If you want more categories, more units, or have found a bug with the conversion
 
 ## Compatibility
 
-- Requires Mac OS X 10.6+
-- Requires iOS 4.0+
+- Requires Mac OS X 10.9+
+- Requires iOS 7.0+
+- Requires ARC
 
 ## License
 
-Copyright (c) 2010 Dave DeLong
+Copyright (c) 2015 Dave DeLong
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

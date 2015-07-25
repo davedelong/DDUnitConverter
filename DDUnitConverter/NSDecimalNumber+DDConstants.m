@@ -3,7 +3,7 @@
 //  DDUnitConverter
 //
 //  Created by Dave DeLong on 11/25/10.
-//  Copyright 2010 Home. All rights reserved.
+//  Copyright 2010-2015 Dave DeLong. All rights reserved.
 //
 
 #import "NSDecimalNumber+DDConstants.h"

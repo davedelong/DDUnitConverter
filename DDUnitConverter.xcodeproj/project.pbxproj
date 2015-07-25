@@ -52,6 +52,7 @@
 		08FB7796FE84155DC02AAC07 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32A70AAB03705E1F00C91783 /* DDUnitConverter_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUnitConverter_Prefix.pch; sourceTree = "<group>"; };
+		55A741651B63F60600CFDC91 /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
 		55B5ABC5129F11F400FBF75C /* DDUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUnitConverter.h; sourceTree = "<group>"; };
 		55B5ABC6129F11F400FBF75C /* DDUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUnitConverter.m; sourceTree = "<group>"; };
 		55B5ABC8129F162500FBF75C /* DDLengthUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLengthUnitConverter.h; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				C6859EA3029092ED04C91782 /* DDUnitConverter.1 */,
+				55A741651B63F60600CFDC91 /* README.markdown */,
 			);
 			name = Documentation;
 			sourceTree = "<group>";
