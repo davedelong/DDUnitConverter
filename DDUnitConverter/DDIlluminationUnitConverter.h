@@ -22,7 +22,8 @@ typedef NS_ENUM(NSInteger, DDIlluminationUnit) {
 	DDIlluminationUnitLumensPerSquareMeter,
 	DDIlluminationUnitNox,
 	DDIlluminationUnitPhots,
-	DDIlluminationClearDaySunIllumination
+	DDIlluminationUnitClearDaySunIllumination,
+    DDIlluminationUnitLux = DDIlluminationUnitLumensPerSquareMeter
 };
 
 @interface DDIlluminationUnitConverter : DDUnitConverter

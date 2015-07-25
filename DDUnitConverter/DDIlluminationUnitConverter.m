@@ -25,13 +25,15 @@
 		case DDIlluminationUnitFootCandles:
 		case DDIlluminationUnitLumensPerSquareFoot:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:107639104167097 exponent:-13 isNegative:NO]; break;
-		case DDIlluminationUnitLumensPerSquareCentimeter:
-		case DDIlluminationUnitNox:
+        case DDIlluminationUnitLumensPerSquareCentimeter:
+            multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:4 isNegative:NO]; break;
+        case DDIlluminationUnitNox:
+            multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:-3 isNegative:NO]; break;
 		case DDIlluminationUnitPhots:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:4 isNegative:NO]; break;
 		case DDIlluminationUnitLumensPerSquareMeter:
 			break;
-		case DDIlluminationClearDaySunIllumination:
+		case DDIlluminationUnitClearDaySunIllumination:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:5 isNegative:NO]; break;
 		default:
 			break;
