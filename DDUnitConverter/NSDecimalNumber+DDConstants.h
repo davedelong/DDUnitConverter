@@ -12,6 +12,7 @@
 @interface NSDecimalNumber (DDConstants)
 
 + (NSDecimalNumber *)piConstant_dd;
++ (NSDecimalNumber *)tauConstant_dd;
 + (NSDecimalNumber *)eConstant_dd;
 + (NSDecimalNumber *)phiConstant_dd;
 + (NSDecimalNumber *)cConstant_dd;
