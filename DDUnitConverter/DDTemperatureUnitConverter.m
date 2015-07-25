@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDTemperatureUnitConverter)
 
-+ (id) temperatureUnitConverter {
++ (instancetype)temperatureUnitConverter {
 	return [[[DDTemperatureUnitConverter alloc] init] autorelease];
 }
 
@@ -22,11 +22,11 @@
 - (NSNumber *) convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
 	if (from == to) { return number; }
 	
-	NSDecimalNumber * original = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
-	NSDecimalNumber * numberInCelcius = original;
+	NSDecimalNumber *original = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
+	NSDecimalNumber *numberInCelcius = original;
 	
-	NSDecimalNumber * fiveNinths = [NSDecimalNumber decimalNumberWithMantissa:555555555555 exponent:-12 isNegative:NO];
-	NSDecimalNumber * nineFifths = [NSDecimalNumber decimalNumberWithMantissa:18 exponent:-1 isNegative:NO];
+	NSDecimalNumber *fiveNinths = [NSDecimalNumber decimalNumberWithMantissa:555555555555 exponent:-12 isNegative:NO];
+	NSDecimalNumber *nineFifths = [NSDecimalNumber decimalNumberWithMantissa:18 exponent:-1 isNegative:NO];
 	
 	switch (from) {
 		case DDTemperatureUnitFarenheit:
@@ -46,7 +46,7 @@
 			break;
 	}
 	
-	NSDecimalNumber * numberInTarget = numberInCelcius;
+	NSDecimalNumber *numberInTarget = numberInCelcius;
 	switch (to) {
 		case DDTemperatureUnitFarenheit:
 			numberInTarget = [numberInTarget decimalNumberByMultiplyingBy:nineFifths];

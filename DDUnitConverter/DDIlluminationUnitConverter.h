@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDIlluminationUnitConverter)
 
-+ (id) illuminationUnitConverter;
++ (instancetype)illuminationUnitConverter;
 
 @end
 
-enum {
-	DDIlluminationUnitFootCandles = 0,
+typedef NS_ENUM(NSInteger, DDIlluminationUnit) {
+    DDIlluminationUnitFootCandles = 0,
 	DDIlluminationUnitLumensPerSquareCentimeter,
 	DDIlluminationUnitLumensPerSquareFoot,
 	DDIlluminationUnitLumensPerSquareMeter,
@@ -24,10 +24,7 @@ enum {
 	DDIlluminationUnitPhots,
 	DDIlluminationClearDaySunIllumination
 };
-typedef NSUInteger DDIlluminationUnit;
 
-@interface DDIlluminationUnitConverter : DDUnitConverter {
-
-}
+@interface DDIlluminationUnitConverter : DDUnitConverter
 
 @end

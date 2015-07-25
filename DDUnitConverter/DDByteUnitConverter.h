@@ -11,11 +11,11 @@
 
 @interface DDUnitConverter (DDByteUnitConverter)
 
-+ (id) byteUnitConverter;
++ (instancetype)byteUnitConverter;
 
 @end
 
-enum {
+typedef NS_ENUM(NSInteger, DDByteUnit) {
 	DDByteUnitBit = 0,
 	DDByteUnitCrumb,
 	DDByteUnitNibble,
@@ -61,10 +61,7 @@ enum {
 //	DDByteUnitZebibyte,
 //	DDByteUnitYobibyte
 };
-typedef NSUInteger DDByteUnit;
 
-@interface DDByteUnitConverter : DDUnitConverter {
-
-}
+@interface DDByteUnitConverter : DDUnitConverter
 
 @end

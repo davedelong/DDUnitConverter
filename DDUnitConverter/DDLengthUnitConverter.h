@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDLengthUnitConverter)
 
-+ (id) lengthUnitConverter;
++ (instancetype)lengthUnitConverter;
 
 @end
 
-enum {
-	DDLengthUnitAstronomicUnits = 0,
+typedef NS_ENUM(NSInteger, DDLengthUnit) {
+    DDLengthUnitAstronomicUnits = 0,
 	DDLengthUnitCentimeters,
 	DDLengthUnitChains,
 	DDLengthUnitInches,
@@ -34,10 +34,7 @@ enum {
 	DDLengthUnitYards,
 	DDLengthUnitAngstroms
 };
-typedef NSUInteger DDLengthUnit;
 
-@interface DDLengthUnitConverter : DDUnitConverter {
-
-}
+@interface DDLengthUnitConverter : DDUnitConverter
 
 @end

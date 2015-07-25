@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDIlluminationUnitConverter)
 
-+ (id) illuminationUnitConverter {
++ (instancetype)illuminationUnitConverter {
 	return [[[DDIlluminationUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDIlluminationUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDIlluminationUnitFootCandles:
 		case DDIlluminationUnitLumensPerSquareFoot:

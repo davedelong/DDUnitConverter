@@ -11,21 +11,18 @@
 
 @interface DDUnitConverter (DDTemperatureUnitConverter)
 
-+ (id) temperatureUnitConverter;
++ (instancetype)temperatureUnitConverter;
 
 @end
 
-enum {
-	DDTemperatureUnitCelcius = 0,
+typedef NS_ENUM(NSInteger, DDTemperatureUnit) {
+    DDTemperatureUnitCelcius = 0,
 	DDTemperatureUnitFarenheit,
 	DDTemperatureUnitKelvin,
 	DDTemperatureUnitReaumur,
 	DDTemperatureUnitRankine
 };
-typedef NSUInteger DDTemperatureUnit;
 
-@interface DDTemperatureUnitConverter : DDUnitConverter {
-
-}
+@interface DDTemperatureUnitConverter : DDUnitConverter
 
 @end

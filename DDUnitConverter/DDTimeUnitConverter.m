@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDTimeUnitConverter)
 
-+ (id) timeUnitConverter {
++ (instancetype)timeUnitConverter {
 	return [[[DDTimeUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDTimeUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDTimeUnitBlinks:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:864 exponent:-3 isNegative:NO]; break;

@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDEnergyUnitConverter)
 
-+ (id) energyUnitConverter;
++ (instancetype)energyUnitConverter;
 
 @end
 
-enum {
-	DDEnergyUnitBTUs = 0,
+typedef NS_ENUM(NSInteger, DDEnergyUnit) {
+    DDEnergyUnitBTUs = 0,
 	DDEnergyUnitCalories,
 	DDEnergyUnitElectronVolts,
 	DDEnergyUnitErgs,
@@ -28,10 +28,7 @@ enum {
 	DDEnergyUnitTherms,
 	DDEnergyUnitWattHours
 };
-typedef NSUInteger DDEnergyUnit;
 
-@interface DDEnergyUnitConverter : DDUnitConverter {
-
-}
+@interface DDEnergyUnitConverter : DDUnitConverter
 
 @end

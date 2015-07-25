@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDAreaUnitConverter)
 
-+ (id) areaUnitConverter {
++ (instancetype)areaUnitConverter {
 	return [[[DDAreaUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDAreaUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDAreaUnitAcres:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:40468564224 exponent:-7 isNegative:NO]; break;

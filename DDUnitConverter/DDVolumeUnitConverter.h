@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDVolumeUnitConverter)
 
-+ (id) volumeUnitConverter;
++ (instancetype)volumeUnitConverter;
 
 @end
 
-enum {
-	DDVolumeUnitDryBarrels = 0,
+typedef NS_ENUM(NSInteger, DDVolumeUnit) {
+    DDVolumeUnitDryBarrels = 0,
 	DDVolumeUnitLiquidBarrels,
 	DDVolumeUnitUKBushels,
 	DDVolumeUnitUSBushels,
@@ -60,10 +60,7 @@ enum {
 	DDVolumeUnitNumber2Point5Cans,
 	DDVolumeUnitNumber10Cans
 };
-typedef NSUInteger DDVolumeUnit;
 
-@interface DDVolumeUnitConverter : DDUnitConverter {
-
-}
+@interface DDVolumeUnitConverter : DDUnitConverter
 
 @end

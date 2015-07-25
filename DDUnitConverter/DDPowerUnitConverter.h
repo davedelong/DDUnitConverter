@@ -11,22 +11,19 @@
 
 @interface DDUnitConverter (DDPowerUnitConverter)
 
-+ (id) powerUnitConverter;
++ (instancetype)powerUnitConverter;
 
 @end
 
-enum {
-	DDPowerUnitFootPoundForcesPerSecond = 0,
+typedef NS_ENUM(NSInteger, DDPowerUnit) {
+    DDPowerUnitFootPoundForcesPerSecond = 0,
 	DDPowerUnitHorsepower,
 	DDPowerUnitMetricHorsepower,
 	DDPowerUnitJoulesPerSecond,
 	DDPowerUnitKilogramForceMetersPerSecond,
 	DDPowerUnitWatts
 };
-typedef NSUInteger DDPowerUnit;
 
-@interface DDPowerUnitConverter : DDUnitConverter {
-
-}
+@interface DDPowerUnitConverter : DDUnitConverter
 
 @end

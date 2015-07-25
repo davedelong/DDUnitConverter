@@ -11,11 +11,11 @@
 
 @interface DDUnitConverter (DDAccelerationUnitConverter)
 
-+ (id) accelerationUnitConverter;
++ (instancetype) accelerationUnitConverter;
 
 @end
 
-enum {
+typedef NS_ENUM(NSInteger, DDAccelerationUnit) {
 	DDAccelerationUnitFeetPerSecondsSquared = 0,
 	DDAccelerationUnitGalileos,
 	DDAccelerationUnitGForces,
@@ -23,10 +23,7 @@ enum {
 	DDAccelerationUnitMetersPerSecondsSquared,
 	DDAccelerationUnitMilesPerSecondsSquared
 };
-typedef NSUInteger DDAccelerationUnit;
 
-@interface DDAccelerationUnitConverter : DDUnitConverter {
-
-}
+@interface DDAccelerationUnitConverter : DDUnitConverter
 
 @end

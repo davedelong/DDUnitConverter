@@ -126,7 +126,7 @@ static dispatch_queue_t updateQueue = nil;
 
 @implementation DDUnitConverter (DDCurrencyUnitConverter)
 
-+ (id) currencyUnitConverter {
++ (instancetype)currencyUnitConverter {
 	return [[[DDCurrencyUnitConverter alloc] init] autorelease];
 }
 
@@ -140,65 +140,64 @@ static dispatch_queue_t updateQueue = nil;
     return _DDCurrencyNames[unit];
 }
 
-+ (NSError *) refreshExchangeRatesInBackground {
++ (NSError *)refreshExchangeRatesInBackground {
 	if ([NSThread currentThread] == [NSThread mainThread]) { return nil; }
+    NSError *error = nil;
     
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	NSURL * imfURL = [NSURL URLWithString:@"http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"];
-    NSURLRequest *imfRequest = [NSURLRequest requestWithURL:imfURL];
-    DDCurrencyUnitConverterConnectionDelegate *tmpDelegate = [[DDCurrencyUnitConverterConnectionDelegate alloc] init];
-    
-    NSURLConnection *imfConnection = [[NSURLConnection alloc] initWithRequest:imfRequest delegate:tmpDelegate];
-    while ([tmpDelegate isFinished] == NO) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
+    @autoreleasepool {
+        NSURL *imfURL = [NSURL URLWithString:@"http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"];
+        NSURLRequest *imfRequest = [NSURLRequest requestWithURL:imfURL];
+        DDCurrencyUnitConverterConnectionDelegate *tmpDelegate = [[DDCurrencyUnitConverterConnectionDelegate alloc] init];
+        
+        NSURLConnection *imfConnection = [[NSURLConnection alloc] initWithRequest:imfRequest delegate:tmpDelegate];
+        while ([tmpDelegate isFinished] == NO) {
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
+        }
+        [imfConnection release];
+        
+        NSString *raw = [tmpDelegate string];
+        error = [tmpDelegate error];
+        
+        if (error == nil) {
+            NSArray *rows = [raw componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            BOOL hasStartedCulling = NO;
+            short rowIndex = 0;
+            for (NSString *row in rows) {
+                if ([row length] == 0) { continue; }
+                if (hasStartedCulling == NO) {
+                    if ([row hasPrefix:@"Currency"]) {
+                        hasStartedCulling = YES;
+                    }
+                } else {
+                    if ([row hasPrefix:@"Currency"]) {
+                        break;
+                    } else {
+                        NSArray *fields = [row componentsSeparatedByString:@"\t"];
+                        NSString *currencyName = [fields objectAtIndex:0];
+                        
+                        double conversionValue = 0.0f;
+                        for (int i = 1; i < [fields count]; ++i) {
+                            NSString *field = [fields objectAtIndex:i];
+                            if ([field length] > 0) {
+                                conversionValue = [field doubleValue];
+                                break;
+                            }
+                        }
+                        [_DDCurrencyExchangeRates setObject:@(conversionValue) forKey:currencyName];
+                        rowIndex++;
+                    }
+                }
+            }
+        }
+        
+        [error retain];
+        [tmpDelegate release];
     }
-    [imfConnection release];
-    
-    NSString *raw = [tmpDelegate string];
-    NSError *error = [tmpDelegate error];
-	
-	if (error == nil) {
-		NSArray * rows = [raw componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-		BOOL hasStartedCulling = NO;
-		short rowIndex = 0;
-		for (NSString * row in rows) {
-			if ([row length] == 0) { continue; }
-			if (hasStartedCulling == NO) {
-				if ([row hasPrefix:@"Currency"]) {
-					hasStartedCulling = YES;
-				}
-			} else {
-				if ([row hasPrefix:@"Currency"]) {
-					break;
-				} else {
-					NSArray * fields = [row componentsSeparatedByString:@"\t"];
-                    NSString *currencyName = [fields objectAtIndex:0];
-                    
-					double conversionValue = 0.0f;
-					for (int i = 1; i < [fields count]; ++i) {
-						NSString * field = [fields objectAtIndex:i];
-						if ([field length] > 0) {
-							conversionValue = [field doubleValue];
-							break;
-						}
-					}
-                    [_DDCurrencyExchangeRates setObject:[NSDecimalNumber numberWithDouble:conversionValue] forKey:currencyName];
-					rowIndex++;
-				}
-			}
-		}
-	}
-	
-    [error retain];
-    [tmpDelegate release];
-    
-	[pool drain];
     
     return [error autorelease];
 }
 
-+ (void) initialize {
++ (void)initialize {
 	if (self == [DDCurrencyUnitConverter class]) {
         updateQueue = dispatch_queue_create("com.davedelong.ddunitconverter", 0);
         _DDCurrencyExchangeRates = [[NSMutableDictionary alloc] init];
@@ -209,8 +208,8 @@ static dispatch_queue_t updateQueue = nil;
 	}
 }
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	if (unit < DDCurrencyUnitSDR) {
         NSString *name = _DDCurrencyNames[unit];
         multiplier = [_DDCurrencyExchangeRates objectForKey:name];
@@ -222,12 +221,12 @@ static dispatch_queue_t updateQueue = nil;
 	return multiplier;
 }
 
-- (NSNumber *) convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
+- (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
     dispatch_sync(updateQueue, ^{ });
     return [super convertNumber:number fromUnit:from toUnit:to];
 }
 
-- (void) refreshExchangeRates {
+- (void)refreshExchangeRates {
     [self refreshExchangeRatesWithCompletion:NULL];
 }
 

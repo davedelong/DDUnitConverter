@@ -11,22 +11,19 @@
 
 @interface DDUnitConverter (DDForceUnitConverter)
 
-+ (id) forceUnitConverter;
++ (instancetype)forceUnitConverter;
 
 @end
 
-enum {
-	DDForceUnitDynes = 0,
+typedef NS_ENUM(NSInteger, DDForceUnit) {
+    DDForceUnitDynes = 0,
 	DDForceUnitKilogramForces,
 	DDForceUnitNewtons,
 	DDForceUnitPoundals,
 	DDForceUnitPoundForces,
 	DDForceUnitSthenes
 };
-typedef NSUInteger DDForceUnit;
 
-@interface DDForceUnitConverter : DDUnitConverter {
-
-}
+@interface DDForceUnitConverter : DDUnitConverter
 
 @end

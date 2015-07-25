@@ -10,10 +10,8 @@
 
 typedef NSUInteger DDUnit;
 
-@interface DDUnitConverter : NSObject {
+@interface DDUnitConverter : NSObject
 
-}
-
-- (NSNumber *) convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to;
+- (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)fromUnit toUnit:(DDUnit)toUnit;
 
 @end

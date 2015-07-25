@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDMassUnitConverter)
 
-+ (id) massUnitConverter;
++ (instancetype)massUnitConverter;
 
 @end
 
-enum {
-	DDMassUnitAtomicMassUnits = 0,
+typedef NS_ENUM(NSInteger, DDMassUnit) {
+    DDMassUnitAtomicMassUnits = 0,
 	DDMassUnitDrachms,
 	DDMassUnitDrams,
 	DDMassUnitGrains,
@@ -39,10 +39,7 @@ enum {
 	DDMassUnitTonnes,
 	DDMassUnitFirkins
 };
-typedef NSUInteger DDMassUnit;
 
-@interface DDMassUnitConverter : DDUnitConverter {
-
-}
+@interface DDMassUnitConverter : DDUnitConverter
 
 @end

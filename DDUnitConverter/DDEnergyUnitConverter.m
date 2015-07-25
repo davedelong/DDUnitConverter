@@ -11,7 +11,7 @@
 
 @implementation DDUnitConverter (DDEnergyUnitConverter)
 
-+ (id) energyUnitConverter {
++ (instancetype)energyUnitConverter {
 	return [[[DDEnergyUnitConverter alloc] init] autorelease];
 }
 
@@ -20,8 +20,8 @@
 
 @implementation DDEnergyUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDEnergyUnitBTUs:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:105506 exponent:-2 isNegative:NO]; break;

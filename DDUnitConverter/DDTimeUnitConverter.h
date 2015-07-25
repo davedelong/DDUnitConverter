@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDTimeUnitConverter)
 
-+ (id) timeUnitConverter;
++ (instancetype)timeUnitConverter;
 
 @end
 
-enum {
-	DDTimeUnitBlinks = 0,
+typedef NS_ENUM(NSInteger, DDTimeUnit) {
+    DDTimeUnitBlinks = 0,
 	DDTimeUnitCenturies,
 	DDTimeUnitCesium133,
 	DDTimeUnitDays,
@@ -44,10 +44,7 @@ enum {
 	
 	DDTimeUnitMicrofortnights
 };
-typedef NSUInteger DDTimeUnit;
 
-@interface DDTimeUnitConverter : DDUnitConverter {
-
-}
+@interface DDTimeUnitConverter : DDUnitConverter
 
 @end

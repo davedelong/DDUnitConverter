@@ -11,7 +11,7 @@
 
 @implementation DDUnitConverter (DDAngleUnitConverter)
 
-+ (id) angleUnitConverter {
++ (instancetype)angleUnitConverter {
 	return [[[DDAngleUnitConverter alloc] init] autorelease];
 }
 
@@ -20,8 +20,8 @@
 
 @implementation DDAngleUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDAngleUnitCircles:
 		case DDAngleUnitRevolutions:

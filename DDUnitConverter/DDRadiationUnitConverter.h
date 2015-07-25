@@ -11,18 +11,15 @@
 
 @interface DDUnitConverter (DDRadiationUnitConverter)
 
-+ (id) radiationUnitConverter;
++ (instancetype)radiationUnitConverter;
 
 @end
 
-enum {
-	DDRadiationUnitBecquerels = 0,
+typedef NS_ENUM(NSInteger, DDRadiationUnit) {
+    DDRadiationUnitBecquerels = 0,
 	DDRadiationUnitCuries
 };
-typedef NSUInteger DDRadiationUnit;
 
-@interface DDRadiationUnitConverter : DDUnitConverter {
-
-}
+@interface DDRadiationUnitConverter : DDUnitConverter
 
 @end

@@ -11,25 +11,25 @@
 
 @implementation DDUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
 	[NSException raise:NSInvalidArgumentException format:@"%@ must be overridden", NSStringFromSelector(_cmd)];
 	return nil;
 }
 
-- (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)from toUnit:(DDUnit)to {
-	if (from == to) { return number; }
+- (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)fromUnit toUnit:(DDUnit)toUnit {
+	if (fromUnit == toUnit) { return number; }
 	
     //make sure it's an NSDecimalNumber
-	NSDecimalNumber * source = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
+	NSDecimalNumber *source = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
 	
-	NSDecimalNumber * convertToBaseUnit = [[self class] multiplierForUnit:from];
-	NSDecimalNumber * valueInBaseUnit = [source decimalNumberByMultiplyingBy:convertToBaseUnit];
+	NSDecimalNumber *convertToBaseUnit = [[self class] multiplierForUnit:fromUnit];
+	NSDecimalNumber *valueInBaseUnit = [source decimalNumberByMultiplyingBy:convertToBaseUnit];
 	
-	NSDecimalNumber * convertFromBaseUnit = [[self class] multiplierForUnit:to];
+	NSDecimalNumber *convertFromBaseUnit = [[self class] multiplierForUnit:toUnit];
     if ([convertFromBaseUnit isEqual:[NSDecimalNumber zero]]) {
         convertFromBaseUnit = [NSDecimalNumber one];
     }
-	NSDecimalNumber * valueInTargetUnit = [valueInBaseUnit decimalNumberByDividingBy:convertFromBaseUnit];
+	NSDecimalNumber *valueInTargetUnit = [valueInBaseUnit decimalNumberByDividingBy:convertFromBaseUnit];
 	
 	return valueInTargetUnit;
 }

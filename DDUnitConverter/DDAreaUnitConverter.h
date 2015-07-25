@@ -11,11 +11,11 @@
 
 @interface DDUnitConverter (DDAreaUnitConverter)
 
-+ (id) areaUnitConverter;
++ (instancetype)areaUnitConverter;
 
 @end
 
-enum {
+typedef NS_ENUM(NSInteger, DDAreaUnit) {
 	DDAreaUnitAcres = 0,
 	DDAreaUnitBarns,
 	DDAreaUnitHectares,
@@ -32,10 +32,6 @@ enum {
 	DDAreaUnitSquareYards,
 };
 
-typedef NSUInteger DDAreaUnit;
-
-@interface DDAreaUnitConverter : DDUnitConverter {
-
-}
+@interface DDAreaUnitConverter : DDUnitConverter
 
 @end

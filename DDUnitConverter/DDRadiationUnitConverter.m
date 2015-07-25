@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDRadiationUnitConverter)
 
-+ (id) radiationUnitConverter {
++ (instancetype)radiationUnitConverter {
 	return [[[DDRadiationUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDRadiationUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDRadiationUnitBecquerels:
 			break;

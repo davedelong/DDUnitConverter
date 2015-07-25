@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDMassUnitConverter)
 
-+ (id) massUnitConverter {
++ (instancetype)massUnitConverter {
 	return [[[DDMassUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDMassUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDMassUnitAtomicMassUnits:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:16605 exponent:-31 isNegative:NO]; break;

@@ -11,7 +11,7 @@
 
 @implementation DDUnitConverter (DDAccelerationUnitConverter)
 
-+ (id) accelerationUnitConverter {
++ (instancetype)accelerationUnitConverter {
 	return [[[DDAccelerationUnitConverter alloc] init] autorelease];
 }
 
@@ -20,8 +20,8 @@
 
 @implementation DDAccelerationUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDAccelerationUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDAccelerationUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDAccelerationUnitFeetPerSecondsSquared:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:3048 exponent:-4 isNegative:NO]; break;

@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDPressureUnitConverter)
 
-+ (id) pressureUnitConverter;
++ (instancetype)pressureUnitConverter;
 
 @end
 
-enum {
-	DDPressureUnitAtmospheres = 0,
+typedef NS_ENUM(NSInteger, DDPressureUnit) {
+    DDPressureUnitAtmospheres = 0,
 	DDPressureUnitBars,
 	DDPressureUnitInchesOfMercury,
 	DDPressureUnitInchesOfWater,
@@ -27,10 +27,7 @@ enum {
 	DDPressureUnitPoundForcesPerSquareInch,
 	DDPressureUnitTorrs
 };
-typedef NSUInteger DDPressureUnit;
 
-@interface DDPressureUnitConverter : DDUnitConverter {
-
-}
+@interface DDPressureUnitConverter : DDUnitConverter
 
 @end

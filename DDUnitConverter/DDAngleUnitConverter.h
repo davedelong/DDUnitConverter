@@ -11,11 +11,11 @@
 
 @interface DDUnitConverter (DDAngleUnitConverter)
 
-+ (id) angleUnitConverter;
++ (instancetype) angleUnitConverter;
 
 @end
 
-enum {
+typedef NS_ENUM(NSInteger, DDAngleUnit) {
 	DDAngleUnitCircles = 0,
 	DDAngleUnitDegrees,
 	DDAngleUnitGons,
@@ -29,10 +29,7 @@ enum {
 	DDAngleUnitSeconds,
 	DDAngleUnitTurns
 };
-typedef NSUInteger DDAngleUnit;
 
-@interface DDAngleUnitConverter : DDUnitConverter {
-
-}
+@interface DDAngleUnitConverter : DDUnitConverter
 
 @end

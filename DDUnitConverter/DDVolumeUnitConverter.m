@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDVolumeUnitConverter)
 
-+ (id) volumeUnitConverter {
++ (instancetype)volumeUnitConverter {
 	return [[[DDVolumeUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDVolumeUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDVolumeUnitDryBarrels:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:115627 exponent:-6 isNegative:NO]; break;

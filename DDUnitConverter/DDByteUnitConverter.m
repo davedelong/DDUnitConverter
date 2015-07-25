@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDByteUnitConverter)
 
-+ (id) byteUnitConverter {
++ (instancetype)byteUnitConverter {
 	return [[[DDByteUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDByteUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDByteUnitBit:
 			break;

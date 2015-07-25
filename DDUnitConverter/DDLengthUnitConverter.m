@@ -11,7 +11,7 @@
 
 @implementation DDUnitConverter (DDLengthUnitConverter)
 
-+ (id) lengthUnitConverter {
++ (instancetype)lengthUnitConverter {
 	return [[[DDLengthUnitConverter alloc] init] autorelease];
 }
 
@@ -20,7 +20,7 @@
 @implementation DDLengthUnitConverter
 
 + (NSDecimalNumber *) multiplierForUnit:(DDLengthUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDLengthUnitAstronomicUnits:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:14959787 exponent:4 isNegative:NO]; break;

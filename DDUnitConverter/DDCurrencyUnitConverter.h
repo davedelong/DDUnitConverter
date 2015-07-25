@@ -11,11 +11,11 @@
 
 @interface DDUnitConverter (DDCurrencyUnitConverter)
 
-+ (id) currencyUnitConverter;
++ (instancetype)currencyUnitConverter;
 
 @end
 
-enum {
+typedef NS_ENUM(NSInteger, DDCurrencyUnit) {
 	DDCurrencyUnitEuro = 0,
 	DDCurrencyUnitJapaneseYen,
 	DDCurrencyUnitUKPoundSterling,
@@ -70,20 +70,17 @@ enum {
 	DDCurrencyUnitBolivarFuerte,
 	DDCurrencyUnitSDR
 };
-typedef NSUInteger DDCurrencyUnit;
 
-@interface DDCurrencyUnitConverter : DDUnitConverter {
-
-}
+@interface DDCurrencyUnitConverter : DDUnitConverter
 
 //retrieve a displayable (english) name of the currency unit
 + (NSString *)nameOfCurrencyUnit:(DDCurrencyUnit)unit;
 
 //refresh the exchange rates
-- (void) refreshExchangeRates;
+- (void)refreshExchangeRates;
 
 //refresh the exchange rates and invoke the completion handler upon completion.
 //the completion handler is guaranteed to be executed on the calling queue
-- (void) refreshExchangeRatesWithCompletion:(void(^)(NSError *))completionHandler;
+- (void)refreshExchangeRatesWithCompletion:(void(^)(NSError *))completionHandler;
 
 @end

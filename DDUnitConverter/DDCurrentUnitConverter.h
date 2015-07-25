@@ -11,19 +11,16 @@
 
 @interface DDUnitConverter (DDCurrentUnitConverter)
 
-+ (id) currentUnitConverter;
++ (instancetype)currentUnitConverter;
 
 @end
 
-enum {
+typedef NS_ENUM(NSInteger, DDCurrentUnit) {
 	DDCurrentUnitAmperes = 0,
 	DDCurrentUnitElectromagneticUnits,
 	DDCurrentUnitMilliamperes
 };
-typedef NSUInteger DDCurrentUnit;
 
-@interface DDCurrentUnitConverter : DDUnitConverter {
-
-}
+@interface DDCurrentUnitConverter : DDUnitConverter
 
 @end

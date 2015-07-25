@@ -11,26 +11,23 @@
 
 @interface DDUnitConverter (DDTorqueUnitConverter)
 
-+ (id) torqueUnitConverter;
++ (instancetype)torqueUnitConverter;
 
 @end
 
-enum {
-	DDForceUnitDyneCentimeters = 0,
-	DDForceUnitGramForceCentimeters,
-	DDForceUnitKilogramForceCentimeters,
-	DDForceUnitKilogramForceMeters,
-	DDForceUnitNewtonCentimeters,
-	DDForceUnitNewtonMeters,
-	DDForceUnitOunceForceInches,
-	DDForceUnitPoundalFeet,
-	DDForceUnitPoundForceFeet,
-	DDForceUnitPoundForceInches
+typedef NS_ENUM(NSInteger, DDTorqueUnit) {
+    DDTorqueUnitDyneCentimeters = 0,
+	DDTorqueUnitGramForceCentimeters,
+	DDTorqueUnitKilogramForceCentimeters,
+	DDTorqueUnitKilogramForceMeters,
+	DDTorqueUnitNewtonCentimeters,
+	DDTorqueUnitNewtonMeters,
+	DDTorqueUnitOunceForceInches,
+	DDTorqueUnitPoundalFeet,
+	DDTorqueUnitPoundForceFeet,
+	DDTorqueUnitPoundForceInches
 };
-typedef NSUInteger DDTorqueUnit;
 
-@interface DDTorqueUnitConverter : DDUnitConverter {
-
-}
+@interface DDTorqueUnitConverter : DDUnitConverter
 
 @end

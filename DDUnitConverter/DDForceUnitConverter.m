@@ -11,7 +11,7 @@
 
 @implementation DDUnitConverter (DDForceUnitConverter)
 
-+ (id) forceUnitConverter {
++ (instancetype)forceUnitConverter {
 	return [[[DDForceUnitConverter alloc] init] autorelease];
 }
 
@@ -20,8 +20,8 @@
 
 @implementation DDForceUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDForceUnitDynes:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:-5 isNegative:NO]; break;

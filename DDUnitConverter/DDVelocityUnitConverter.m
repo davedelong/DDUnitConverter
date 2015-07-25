@@ -11,7 +11,7 @@
 
 @implementation DDUnitConverter (DDVelocityUnitConverter)
 
-+ (id) velocityUnitConverter {
++ (instancetype)velocityUnitConverter {
 	return [[[DDVelocityUnitConverter alloc] init] autorelease];
 }
 
@@ -20,8 +20,8 @@
 
 @implementation DDVelocityUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDVelocityUnitCentimetersPerHour:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:2777777777777778 exponent:-15 isNegative:NO]; break;

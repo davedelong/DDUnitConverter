@@ -11,21 +11,18 @@
 
 @interface DDUnitConverter (DDInductanceUnitConverter)
 
-+ (id) inductanceUnitConverter;
++ (instancetype)inductanceUnitConverter;
 
 @end
 
-enum {
-	DDInductanceUnitElectromagneticUnits = 0,
+typedef NS_ENUM(NSInteger, DDInductanceUnit) {
+    DDInductanceUnitElectromagneticUnits = 0,
 	DDInductanceUnitElectrostaticUnits,
 	DDInductanceUnitHenrys,
 	DDInductanceUnitMillihenrys,
 	DDInductanceUnitMicrohenrys
 };
-typedef NSUInteger DDInductanceUnit;
 
-@interface DDInductanceUnitConverter : DDUnitConverter {
-
-}
+@interface DDInductanceUnitConverter : DDUnitConverter
 
 @end

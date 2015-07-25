@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDInductanceUnitConverter)
 
-+ (id) inductanceUnitConverter {
++ (instancetype)inductanceUnitConverter {
 	return [[[DDInductanceUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDInductanceUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDInductanceUnitElectromagneticUnits:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:-9 isNegative:NO]; break;

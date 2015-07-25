@@ -11,11 +11,11 @@
 
 @interface NSDecimalNumber (DDConstants)
 
-+ (NSDecimalNumber *) piConstant_dd;
-+ (NSDecimalNumber *) eConstant_dd;
-+ (NSDecimalNumber *) phiConstant_dd;
-+ (NSDecimalNumber *) cConstant_dd;
-+ (NSDecimalNumber *) electronChargeConstant_dd;
-+ (NSDecimalNumber *) gConstant_dd;
++ (NSDecimalNumber *)piConstant_dd;
++ (NSDecimalNumber *)eConstant_dd;
++ (NSDecimalNumber *)phiConstant_dd;
++ (NSDecimalNumber *)cConstant_dd;
++ (NSDecimalNumber *)electronChargeConstant_dd;
++ (NSDecimalNumber *)gConstant_dd;
 
 @end

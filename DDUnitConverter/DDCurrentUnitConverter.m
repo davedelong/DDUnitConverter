@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDCurrentUnitConverter)
 
-+ (id) currentUnitConverter {
++ (instancetype)currentUnitConverter {
 	return [[[DDCurrentUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDCurrentUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDCurrentUnitAmperes:
 			break;

@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDMagnitudeUnitConverter)
 
-+ (id) magnitudeUnitConverter {
++ (instancetype)magnitudeUnitConverter {
 	return [[[DDMagnitudeUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDMagnitudeUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDMagnitudeUnitYocto:
 			return [NSDecimalNumber decimalNumberWithMantissa:1 exponent:-24 isNegative:NO]; break;

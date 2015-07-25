@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDVelocityUnitConverter)
 
-+ (id) velocityUnitConverter;
++ (instancetype)velocityUnitConverter;
 
 @end
 
-enum {
-	DDVelocityUnitCentimetersPerHour = 0,
+typedef NS_ENUM(NSInteger, DDVelocityUnit) {
+    DDVelocityUnitCentimetersPerHour = 0,
 	DDVelocityUnitCentimetersPerMinute,
 	DDVelocityUnitCentimetersPerSecond,
 	DDVelocityUnitFeetPerHour,
@@ -39,10 +39,7 @@ enum {
 	DDVelocityUnitMilesPerSecond,
 	DDVelocityUnitFurlongsPerMicrofortnight
 };
-typedef NSUInteger DDVelocityUnit;
 
-@interface DDVelocityUnitConverter : DDUnitConverter {
-
-}
+@interface DDVelocityUnitConverter : DDUnitConverter
 
 @end

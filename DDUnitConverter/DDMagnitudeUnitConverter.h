@@ -11,12 +11,12 @@
 
 @interface DDUnitConverter (DDMagnitudeUnitConverter)
 
-+ (id) magnitudeUnitConverter;
++ (instancetype)magnitudeUnitConverter;
 
 @end
 
-enum {
-	DDMagnitudeUnitYocto = 0,
+typedef NS_ENUM(NSInteger, DDMagnitudeUnit) {
+    DDMagnitudeUnitYocto = 0,
 	DDMagnitudeUnitZepto,
 	DDMagnitudeUnitAtto,
 	DDMagnitudeUnitFemto,
@@ -38,10 +38,7 @@ enum {
 	DDMagnitudeUnitZetta,
 	DDMagnitudeUnitYotta
 };
-typedef NSUInteger DDMagnitudeUnit;
 
-@interface DDMagnitudeUnitConverter : DDUnitConverter {
-
-}
+@interface DDMagnitudeUnitConverter : DDUnitConverter
 
 @end

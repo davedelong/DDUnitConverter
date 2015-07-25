@@ -10,7 +10,7 @@
 
 @implementation DDUnitConverter (DDPressureUnitConverter)
 
-+ (id) pressureUnitConverter {
++ (instancetype)pressureUnitConverter {
 	return [[[DDPressureUnitConverter alloc] init] autorelease];
 }
 
@@ -19,8 +19,8 @@
 
 @implementation DDPressureUnitConverter
 
-+ (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
-	NSDecimalNumber * multiplier = [NSDecimalNumber one];
++ (NSDecimalNumber *)multiplierForUnit:(DDUnit)unit {
+	NSDecimalNumber *multiplier = [NSDecimalNumber one];
 	switch (unit) {
 		case DDPressureUnitAtmospheres:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:101325 exponent:0 isNegative:NO]; break;
