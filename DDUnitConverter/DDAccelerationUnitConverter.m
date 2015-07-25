@@ -26,7 +26,7 @@
 		case DDAccelerationUnitFeetPerSecondsSquared:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:3048 exponent:-4 isNegative:NO]; break;
 		case DDAccelerationUnitGalileos:
-			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:2 isNegative:NO]; break;
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:-2 isNegative:NO]; break;
 		case DDAccelerationUnitGForces:
 			multiplier = [NSDecimalNumber gConstant_dd]; break;
 		case DDAccelerationUnitKilometersPerSecondsSquared:
