@@ -1,0 +1,27 @@
+-x
+objective-c
+-arch
+x86_64
+-fretain-comments-from-system-headers
+-std=gnu99
+-fobjc-arc
+-gmodules
+-fpascal-strings
+-O0
+-isysroot
+/Applications/Xcode 7.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
+-fasm-blocks
+-mmacosx-version-min=10.11
+-g
+-iquote
+-iquote
+-I/Users/curzel/Desktop/dev/DDUnitConverter/DerivedData/DDUnitConverter/Build/Products/Debug/include
+-F/Users/curzel/Desktop/dev/DDUnitConverter/DerivedData/DDUnitConverter/Build/Products/Debug
+-ferror-limit=10
+-working-directory=/Users/curzel/Desktop/dev/DDUnitConverter
+-Xclang
+-detailed-preprocessing-record
+x86_64-apple-darwin15.0.0
+"4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.1.76)"
+SDK_PRODUCT_BUILD_VERSION=15A278
+15A278
