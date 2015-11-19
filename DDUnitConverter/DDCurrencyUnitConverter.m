@@ -131,7 +131,7 @@ static NSMutableDictionary *_DDCurrencyExchangeRates = nil;
                 break;
             }
         }
-        _DDCurrencyExchangeRates[currencyName] = @(conversionValue);
+        _DDCurrencyExchangeRates[currencyName] = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%f",conversionValue]];
     }
     
     [self _onqueue_performCallbacks:nil];
@@ -206,6 +206,63 @@ static NSString *_DDCurrencyNames[] = {
     @"SDR"
 };
 
+
+static NSString *_DDCurrencyCodes[] = {
+    @"EUR",
+    @"JPY",
+    @"GBP",
+    @"USD",
+    @"DZD",
+    @"ARS",
+    @"AUD",
+    @"BHD",
+    @"BWP",
+    @"BRL",
+    @"BND",
+    @"CAD",
+    @"CLP",
+    @"CNY",
+    @"COP",
+    @"CZK",
+    @"DKK",
+    @"HUF",
+    @"ISK",
+    @"INR",
+    @"IDR",
+    @"IRR",
+    @"ILS",
+    @"KZT",
+    @"KRW",
+    @"KWD",
+    @"LYD",
+    @"MYR",
+    @"MUR",
+    @"MXN",
+    @"NPR",
+    @"NZD",
+    @"NOK",
+    @"OMR",
+    @"PKR",
+    @"PEN",
+    @"PHP",
+    @"PLN",
+    @"QUAR",
+    @"URB",
+    @"SAR",
+    @"SGD",
+    @"ZAR",
+    @"LKR",
+    @"SEK",
+    @"CHF",
+    @"THB",
+    @"TTD",
+    @"TND",
+    @"AED",
+    @"UYU",
+    @"VEF",
+    @"SDR"
+};
+
 @implementation DDUnitConverter (DDCurrencyUnitConverter)
 
 + (instancetype)currencyUnitConverter {
@@ -220,6 +277,27 @@ static NSString *_DDCurrencyNames[] = {
 + (NSString *)nameOfCurrencyUnit:(DDCurrencyUnit)unit {
     if (unit > DDCurrencyUnitSDR) { return nil; }
     return _DDCurrencyNames[unit];
+}
+
+//retrieve the ISO-4217 currency code
++ (NSString *)codeOfCurrencyUnit:(DDCurrencyUnit)unit {
+    if (unit > DDCurrencyUnitSDR) { return nil; }
+    return _DDCurrencyCodes[unit];
+}
+
+//retrieve currency unit from the currency code
++ (DDCurrencyUnit)unitFromCurrencyCode:(NSString*)ccode {
+    
+    int nCurrencies;
+    
+    nCurrencies = sizeof(_DDCurrencyCodes) / sizeof(_DDCurrencyCodes[0]);
+    
+    for ( int i=0; i<nCurrencies; i++ ) {
+        if ( [ccode isEqualToString:_DDCurrencyCodes[i]] ) {
+            return (DDCurrencyUnit)i;
+        }
+    }
+    return DDCurrencyUnitSDR;
 }
 
 + (void)initialize {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "+[DDCurrencyUnitConverter unitFromCurrencyCode:]:DDCurrencyUnitConverter.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(DDCurrencyUnit)i">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

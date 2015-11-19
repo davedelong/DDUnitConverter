@@ -85,11 +85,17 @@ typedef NS_ENUM(NSInteger, DDCurrencyUnit) {
 //retrieve a displayable (english) name of the currency unit
 + (NSString *)nameOfCurrencyUnit:(DDCurrencyUnit)unit;
 
+//retrieve the ISO-4217 currency code
++ (NSString *)codeOfCurrencyUnit:(DDCurrencyUnit)unit;
+
+//retrieve currency unit from the currency code
++ (DDCurrencyUnit)unitFromCurrencyCode:(NSString*)ccode;
+
 //refresh the exchange rates
 - (void)refreshExchangeRates;
 
 //refresh the exchange rates and invoke the completion handler upon completion.
 //the completion handler is guaranteed to be executed on the calling queue
 - (void)refreshExchangeRatesWithCompletion:(void(^)(NSError *))completionHandler;
-
+    
 @end
