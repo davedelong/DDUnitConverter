@@ -17,21 +17,28 @@
 }
 
 - (NSNumber *)convertNumber:(NSNumber *)number fromUnit:(DDUnit)fromUnit toUnit:(DDUnit)toUnit {
-	if (fromUnit == toUnit) { return number; }
-	
+    if (fromUnit == toUnit) { return number; }
+    
     //make sure it's an NSDecimalNumber
-	NSDecimalNumber *source = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
-	
-	NSDecimalNumber *convertToBaseUnit = [[self class] multiplierForUnit:fromUnit];
-	NSDecimalNumber *valueInBaseUnit = [source decimalNumberByMultiplyingBy:convertToBaseUnit];
-	
-	NSDecimalNumber *convertFromBaseUnit = [[self class] multiplierForUnit:toUnit];
+    NSDecimalNumber *source = [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
+    
+    NSDecimalNumber *convertToBaseUnit = [[self class] multiplierForUnit:fromUnit];
+    
+    NSDecimalNumber * n1 = [NSDecimalNumber decimalNumberWithString:[source stringValue]];
+    NSDecimalNumber * n2 = [NSDecimalNumber decimalNumberWithString:[convertToBaseUnit stringValue]];
+    
+    NSDecimalNumber *valueInBaseUnit = [n1 decimalNumberByMultiplyingBy:n2];
+    
+    NSDecimalNumber *convertFromBaseUnit = [[self class] multiplierForUnit:toUnit];
     if ([convertFromBaseUnit isEqual:[NSDecimalNumber zero]]) {
         convertFromBaseUnit = [NSDecimalNumber one];
     }
-	NSDecimalNumber *valueInTargetUnit = [valueInBaseUnit decimalNumberByDividingBy:convertFromBaseUnit];
-	
-	return valueInTargetUnit;
+    NSDecimalNumber * n3 = [NSDecimalNumber decimalNumberWithString:[valueInBaseUnit stringValue]];
+    NSDecimalNumber * n4 = [NSDecimalNumber decimalNumberWithString:[convertFromBaseUnit stringValue]];
+    
+    NSDecimalNumber *valueInTargetUnit = [n3 decimalNumberByDividingBy:n4];
+    
+    return valueInTargetUnit;
 }
 
 @end
