@@ -119,19 +119,20 @@ static NSMutableDictionary *_DDCurrencyExchangeRates = nil;
             break;
         }
         
-        
         NSArray *fields = [line componentsSeparatedByString:@"\t"];
         NSString *currencyName = fields[0];
+        if (currencyName.length == 0) { continue; }
         
-        double conversionValue = 0.0f;
+        NSDecimalNumber *decimalConversionValue = [NSDecimalNumber decimalNumberWithString:@"0"];
         for (NSInteger fieldIndex = 1; fieldIndex < fields.count; ++fieldIndex) {
             NSString *field = fields[fieldIndex];
             if (field.length > 0) {
-                conversionValue = field.doubleValue;
+                decimalConversionValue = [NSDecimalNumber decimalNumberWithString:field];
                 break;
             }
         }
-        _DDCurrencyExchangeRates[currencyName] = @(conversionValue);
+        
+        _DDCurrencyExchangeRates[currencyName] = decimalConversionValue;
     }
     
     [self _onqueue_performCallbacks:nil];
